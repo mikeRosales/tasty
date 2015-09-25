@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Iniciar sesión</title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" type="text/css" href="css/af.ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+     <link rel="stylesheet" type="text/css" href="css/icons.css" />
+    <script type="text/javascript" charset="utf-8" src="js/jquery.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/fastclick.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/appframework.ui.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/validaciones.js"></script>
+
+</head>
+<body >
+    <!-- Valoracion -->
+    <div class="view" id="valoracion">
+        <div class="pages">
+            <div class="panel valoracion_opts grid">
+            <br>
+                <h2>¿Cómo estuvo tu (nombre del platillo)?</h2>
+            <br>
+            <!-- <div class="col-2"> -->
+                <div class="col-3">
+                <ul class="sabores_val">
+                    <li class="dul"><a ><img id="dul_v" src="img/ic_dulceC_36.png"><h3> Dulce</h3></a></li><br>
+                    <li class="sal"><a ><img id="sal_v" src="img/ic_salC_36.png"><h3> Salado</h3></a></li><br>
+                    <li class="chi"><a ><img id="chi_v" src="img/ic_chileC_36.png"><h3> Picoso</h3></a></li><br>
+                    <li class="lim"><a ><img id="lim_v" src="img/ic_limonC_36.png"><h3> Ácido</h3></a></li>
+                </ul>    
+            </div>
+            <div class="col-3 select_val">
+                <select id="select_dulce">
+                    <option value="0">0 Nada dulce</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5 Muy dulce</option>
+                </select><br>
+
+                <select id="select_salado">
+                    <option value="0">0 Nada salado</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5 Muy salado</option>
+                </select><br>
+
+                <select id="select_picoso">
+                    <option value="0">0 Nada picoso</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5 Muy picoso</option>
+                </select><br>
+
+                <select id="select_acido">
+                    <option value="0">0 Nada ácido</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5 Muy ácido</option>
+                </select>
+            </div> 
+            <div class="col-3">
+
+                <div class="col-2">
+                    <ul class="sabores_val" id="sabores_sel">
+                    <li ><a><img id="bien_dulce" src="img/ic_bienvacio.png"></a></li><br>
+                    <li ><a><img id="bien_sal" src="img/ic_bienvacio.png"></a></li><br>
+                    <li ><a><img id="bien_pic" src="img/ic_bienvacio.png"></a></li><br>
+                    <li ><a><img id="bien_lim"  src="img/ic_bienvacio.png"></a></li><br>
+                </ul> 
+                </div>
+                <div class="col-2" id="sabores_sel">
+                    <ul class="sabores_val">
+                    <li ><a><img id="mal_dulce" src="img/ic_malvacio.png"></a></li><br>
+                    <li ><a><img id="mal_sal" src="img/ic_malvacio.png"></a></li><br>
+                    <li ><a><img id="mal_pic" src="img/ic_malvacio.png"></a></li><br>
+                    <li ><a><img id="mal_lim" src="img/ic_malvacio.png"></a></li><br>
+                </ul> 
+                </div>
+
+                </div> 
+                <div class="fieldset">
+                <fieldset class="rating">
+                    <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5"></label>
+               <!--      <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half"></label> -->
+                    <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4"></label>
+                    <!-- <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half"></label> -->
+                    <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3"></label>
+                    <!-- <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half"></label> -->
+                    <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" ></label>
+                    <!-- <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half"></label> -->
+                    <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1"></label>
+                  <!--   <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf"></label> -->
+                </fieldset>
+                </div>
+                <br>
+<!--                 <div class="grid">
+                    <img id="star1" src="img/ic_starC_36.png">
+                    <img id="star2" src="img/ic_starC_36.png">
+                    <img id="star3" src="img/ic_starC_36.png">
+                    <img id="star4" src="img/ic_starC_36.png">
+                    <img id="star5" src="img/ic_starC_36.png">
+                </div> -->
+
+                <a class="button green reg" href="#agradece" id="btn_valoracion" onclick="guardarValoracion(id_platillo)">Guardar</a>
+
+
+
+            </div>
+            
+
+        </div>
+
+    </div>
+
+
+
+<!-- Agradecimientos -->
+        <div class="view" id="agradece">
+        <div class="pages">
+            <div class="panel agradecimientos">
+                    <div class="ic_close">
+                    <a id="cerrar_agrad" data-transition="pop-reveal:dismiss">
+                        <img src="img/ic_close_36.png">
+                    </a>      
+                </div> 
+                <img src="img/Logo_1.0[1].png" id="img_logo">
+                <h1>¡Muchas gracias!</h1>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

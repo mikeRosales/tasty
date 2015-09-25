@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Iniciar sesión</title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" type="text/css" href="css/af.ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+     <link rel="stylesheet" type="text/css" href="css/icons.css" />
+    <script type="text/javascript" charset="utf-8" src="js/jquery.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/fastclick.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/appframework.ui.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/temporal.js"></script>
+    <script type="text/javascript">
+    window.addEventListener("resize", myFunction);
+
+
+    function myFunction() {
+        var w = window.outerWidth;
+        var h = window.outerHeight;
+          $.ajax({
+                type: 'get',
+                url: 'http://www.tastyfoods.com.mx/users/publicidad',                
+                dataType: 'json',               
+                 success: function (data) {  
+                    console.log(data);
+                    localstorage.setItem('img',data[0].imagen);
+                       if (w>h) {
+            document.getElementById("img_publicidad").src = 'http://www.tastyfoods.com.mx/'+data[0].imagen ;
+        }
+        else if(w<h)
+        {
+            document.getElementById("img_publicidad").src = 'http://www.tastyfoods.com.mx/'+data[0].imagen ;
+        }
+                }
+            });
+     
+    }
+    </script>
+</head>
+<body>
+    <div class="view" id="publicidad_panel" >
+        <div class="ic_close" >
+            <a id="cerrar_agrad" href="content.html" data-transition='down-reveal:dismiss'>
+                <img src="img/ic_close_36.png">
+            </a>      
+        </div> 
+        <div class="publicidad">
+            <img id="img_publicidad" src="img/opt3_white.png">        
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,2009 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Umami</title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" type="text/css" href="css/af.ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <script type="text/javascript" charset="utf-8" src="js/jquery.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/fastclick.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/appframework.ui.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/af.actionsheet.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/validaciones.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/buscadores.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/categorias.js"></script>
+     <script type="text/javascript" src="https://conektaapi.s3.amazonaws.com/v0.3.0/js/conekta.js"></script>
+     <script type="text/javascript">
+ 
+ // Conekta Public Key
+  Conekta.setPublishableKey('key_AJuCsxJrPqQrjcvv');
+ 
+ // ...
+</script>
+   
+    
+ <!--   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+   <script type="text/javascript" src="https://conektaapi.s3.amazonaws.com/v0.3.2/js/conekta.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/index_js.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/json.js"></script>  -->
+
+</head>
+<!-- <body onload="init();"> -->
+<body >
+<!-- NAV -->
+    <div class="view splitview" id="mainview">
+        <header>
+            <h1 class="title">What</h1>
+        </header>
+        <footer class="nav_opciones">
+            <a href="#vista_horizontal" class="img_menu"  id="tab1" data-transition="none">
+                <img src="img/ic_platillo_36.png">
+            </a>
+            <a href="#page2" class="img_menu" id='tab2' data-transition="none">
+                <img src="img/ic_restaurant_36.png">
+            </a>
+            <a href="#page3" class="img_menu" id='tab3' data-transition="none">
+                <img src="img/ic_categorias_36.png">
+            </a>
+            <a href="#page4" class="img_menu" id='tab4' data-transition="none">
+                <img src="img/ic_dinero_36.png">
+            </a>
+            <a href="#page5" class="img_menu" id='tab5' data-transition="none">
+                <img src="img/ic_configuracion_36.png">
+            </a>
+            </footer>
+
+<!-- INICIO DE MODULOS -->
+        <div class="pages">
+<!-- PLATILLOS -->
+<!-- Vista horizontal -->
+            <div class="panel" data-title="Platillos" id="vista_horizontal"  data-transition="none">
+                <ul class="list" id="platillos_horizontal">
+                  
+                    
+                </ul>
+            </div>
+<!-- Vista de cuadros -->
+            <div class="panel grid" id="vista_cuadros" data-title="Platillos">
+                <div class="grid grid-photo" id="platillos_cuadros">
+                    <!-- <li><div class="grid-photo-box"><a href="#page6"><img src="" /></a></div></li> -->
+                </div>    
+            </div>          
+
+<!-- RESTAURANTES -->
+<!-- Vista horizontal -->
+            <div  class="panel" id="page2" data-title="Restaurantes">
+                <ul class="list restaurantes" id="restaurantes">
+                    <!-- <li class="lista_restaurante restaurante_click">
+                        <p id="id_restaurante">1</p>
+                        <div class="grid-photo-box img-restaurant" >
+                        <a href="#item_restaurante"><img src="img/icon.png" /></a></div>
+                        <div class="swipe-content">
+                           <a href="#item_restaurante">
+                                <h2>Resturante 1</h2>
+                                <h3>10:00 am a 9:00 pm</h3>
+
+                           </a>
+                        </div>
+                    </li> -->                
+                </ul>
+            </div>
+<!-- Vista cuadros -->
+            <div class="panel grid" id="vista_cuadros_rest" data-title="Restaurantes">
+                <div class="platillos_opt">
+                </div>
+                <div class="grid grid-photo" id="restaurantes_cuadros">
+                    <!-- <li><div class="grid-photo-box"><a href="#item_restaurante"><img src="" /></a></div></li> -->
+                </div>    
+            </div>       
+<!-- Vista restaurante -->
+            <div class="panel grid" data-title="Restaurante" id="item_restaurante">
+                <ul class="list" id="platillos_horizontal" >
+                   <!--  <li class="lista_restaurante">
+                        <div class="grid-photo-box img-platillo" >
+                        <a href="#page6"><img src="img/icon.png" /></a></div>
+                        <div class="swipe-content">
+                           <a href="#page6">
+                                <div class="dato_nom">
+                                    <h3>Nombre</h3>
+                                </div>
+                                <p><h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer aliquam finibus ipsum, in posuere eros convallis et</h4></p>
+                                <div class="dato_precio">
+                                    <h3>$0.00</h3>
+                                </div>
+                           </a>
+                           <div class="valoracion">
+                               <ul >
+                                    <li ><a href=""><img  src="img/ic_starO_36.png"></a></li>
+                                    <li ><a href=""><img  src="img/ic_starO_36.png"></a></li>
+                                    <li ><a href=""><img  src="img/ic_starO_36.png"></a></li>
+                                    <li ><a href=""><img  src="img/ic_starO_36.png"></a></li>
+                                    <li ><a href=""><img src="img/ic_starO_36.png"></a></li>
+                                </ul>
+                           </div>
+                        </div>
+                    </li>
+                    <li class="lista_restaurante ">
+                        <div class="grid-photo-box img-platillo">
+                        <a href="#page6"><img src="img/icon.png" /></a></div>
+                        <div class="swipe-content">
+                           <a href="#page6">
+                                <div class="dato_nom">
+                                    <h3>Nombre</h3>
+                                </div>
+                                <p><h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer aliquam finibus ipsum, in posuere eros convallis et</h4></p>
+                                <div class="dato_precio">
+                                    <h3>$0.00</h3>
+                                </div>
+                           </a>
+                           <div class="valoracion">
+                               <ul >
+                                    <li ><a href=""><img  src="img/ic_starO_36.png"></a></li>
+                                    <li ><a href=""><img  src="img/ic_starO_36.png"></a></li>
+                                    <li ><a href=""><img  src="img/ic_starO_36.png"></a></li>
+                                    <li ><a href=""><img  src="img/ic_starO_36.png"></a></li>
+                                    <li ><a href=""><img src="img/ic_starO_36.png"></a></li>
+                                </ul>
+                           </div>
+                        </div>
+                    </li>
+                    <li class="lista_restaurante ">
+                        <div class="grid-photo-box img-platillo">
+                        <a href="#page6"><img src="img/icon.png" /></a></div>
+                        <div class="swipe-content">
+                           <a href="#page6">
+                                <div class="dato_nom">
+                                    <h3>Nombre</h3>
+                                </div>
+                                <p><h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer aliquam finibus ipsum, in posuere eros convallis et</h4></p>
+                                <div class="dato_precio">
+                                    <h3>$0.00</h3>
+                                </div>
+                           </a>
+                           <div class="valoracion">
+                               <ul >
+                                    <li ><a href=""><img  src="img/ic_starO_36.png"></a></li>
+                                    <li ><a href=""><img  src="img/ic_starO_36.png"></a></li>
+                                    <li ><a href=""><img  src="img/ic_starO_36.png"></a></li>
+                                    <li ><a href=""><img  src="img/ic_starO_36.png"></a></li>
+                                    <li ><a href=""><img src="img/ic_starO_36.png"></a></li>
+                                </ul>
+                           </div>
+                        </div>
+                    </li>
+                    <li class="lista_restaurante opcion">
+                        <div class="grid-photo-box img-platillo"><a href="#page6"><img src="img/icon.png" /></a></div>
+                        <div class="swipe-content">
+                           <a href="#page6">
+                                <div class="dato_nom">
+                                    <h3>Nombre</h3>
+                                </div>
+                                <p><h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer aliquam finibus ipsum, in posuere eros convallis et</h4></p>
+                                <div class="dato_precio">
+                                    <h3>$0.00</h3>
+                                </div>
+                           </a>
+                           <div class="valoracion">
+                               <ul >
+                                    <li ><a href=""><img  src="img/ic_starO_36.png"></a></li>
+                                    <li ><a href=""><img  src="img/ic_starO_36.png"></a></li>
+                                    <li ><a href=""><img  src="img/ic_starO_36.png"></a></li>
+                                    <li ><a href=""><img  src="img/ic_starO_36.png"></a></li>
+                                    <li ><a href=""><img src="img/ic_starO_36.png"></a></li>
+                                </ul>
+                           </div>
+                        </div>
+                    </li>
+                    <li class="lista_restaurante opcion">
+                        <div class="grid-photo-box img-platillo"><a href="#page6"><img src="img/icon.png" /></a></div>
+                        <div class="swipe-content">
+                           <a href="#page6">
+                               <div class="dato_nom">
+                                    <h3>Nombre</h3>
+                                </div>
+                                <p><h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer aliquam finibus ipsum, in posuere eros convallis et</h4></p>
+                                <div class="dato_precio">
+                                    <h3>$0.00</h3>
+                                </div>
+                           </a>
+                           <div class="valoracion">
+                               <ul >
+                                    <li ><a href=""><img  src="img/ic_starO_36.png"></a></li>
+                                    <li ><a href=""><img  src="img/ic_starO_36.png"></a></li>
+                                    <li ><a href=""><img  src="img/ic_starO_36.png"></a></li>
+                                    <li ><a href=""><img  src="img/ic_starO_36.png"></a></li>
+                                    <li ><a href=""><img src="img/ic_starO_36.png"></a></li>
+                                </ul>
+                           </div>
+                        </div>
+                    </li>
+                    <li class="lista_restaurante opcion">
+                        <div class="grid-photo-box img-platillo"><a href="#page6"><img src="img/icon.png" /></a></div>
+                        <div class="swipe-content">
+                           <a href="#page6">
+                               <div class="dato_nom">
+                                    <h3>Nombre</h3>
+                                </div>
+                                <p><h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer aliquam finibus ipsum, in posuere eros convallis et</h4></p>
+                                <div class="dato_precio">
+                                    <h3>$0.00</h3>
+                                </div>
+                           </a>
+                           <div class="valoracion">
+                               <ul >
+                                    <li ><a href=""><img  src="img/ic_starO_36.png"></a></li>
+                                    <li ><a href=""><img  src="img/ic_starO_36.png"></a></li>
+                                    <li ><a href=""><img  src="img/ic_starO_36.png"></a></li>
+                                    <li ><a href=""><img  src="img/ic_starO_36.png"></a></li>
+                                    <li ><a href=""><img src="img/ic_starO_36.png"></a></li>
+                                </ul>
+                           </div>
+                        </div>
+                    </li>
+                    <li class="lista_restaurante opcion">
+                        <div class="grid-photo-box img-platillo"><a href="#page6"><img src="img/icon.png" /></a></div>
+                        <div class="swipe-content">
+                           <a href="#page6">
+                                <div class="dato_nom">
+                                    <h3>Nombre</h3>
+                                </div>
+                                <p><h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer aliquam finibus ipsum, in posuere eros convallis et</h4></p>
+                                <div class="dato_precio">
+                                    <h3>$0.00</h3>
+                                </div>
+                           </a>
+                           <div class="valoracion">
+                               <ul >
+                                    <li ><a href=""><img  src="img/ic_starO_36.png"></a></li>
+                                    <li ><a href=""><img  src="img/ic_starO_36.png"></a></li>
+                                    <li ><a href=""><img  src="img/ic_starO_36.png"></a></li>
+                                    <li ><a href=""><img  src="img/ic_starO_36.png"></a></li>
+                                    <li ><a href=""><img src="img/ic_starO_36.png"></a></li>
+                                </ul>
+                           </div>
+                        </div>
+                    </li>
+                    <li class="lista_restaurante opcion">
+                        <div class="grid-photo-box img-platillo"><a href="#page6"><img src="img/icon.png" /></a></div>
+                        <div class="swipe-content">
+                           <a href="#page6">
+                               <div class="dato_nom">
+                                    <h3>Nombre</h3>
+                                </div>
+                                <p><h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer aliquam finibus ipsum, in posuere eros convallis et</h4></p>
+                                <div class="dato_precio">
+                                    <h3>$0.00</h3>
+                                </div>
+                           </a>
+                           <div class="valoracion">
+                               <ul >
+                                    <li ><a href=""><img  src="img/ic_starO_36.png"></a></li>
+                                    <li ><a href=""><img  src="img/ic_starO_36.png"></a></li>
+                                    <li ><a href=""><img  src="img/ic_starO_36.png"></a></li>
+                                    <li ><a href=""><img  src="img/ic_starO_36.png"></a></li>
+                                    <li ><a href=""><img src="img/ic_starO_36.png"></a></li>
+                                </ul>
+                           </div>
+                        </div>
+                    </li> -->
+                </ul>
+            </div>
+
+<!-- CATEGORIAS -->
+            <div  class="panel" id="page3" data-title="Categorias">
+                <ul class="list categorias" id="categorias">
+                    <li><a href="#bebidas_calientes" id="opt_bebidas_calientes" onClick="bebidasCalientes()">Bebidas calientes</a></li>
+                    <li><a href="#bebidas_frias" id="opt_bebidas_frias" onClick="bebidasFrias()">Bebidas frias</a></li>
+                    <li><a href="#botana" id="opt_botana" onClick="botana()">Botana</a></li>
+                    <li><a href="#buffet" id="opt_buffet" onClick="buffet()">Buffet</a></li>
+                    <li><a href="#desayunos" id="opt_desayunos" onClick="desayunos()">Desayunos</a></li>
+                    <li><a href="#dulces" id="opt_dulces" onClick="dulces()">Dulces</a></li>
+                    <li><a href="#eventos" id="opt_eventos" onClick="eventosEsp()">Eventos especiales</a></li>
+                    <li><a href="#frutas" id="opt_frutas" onClick="frutas()">Frutas</a></li>
+                    <li><a href="#hamburguesas" id="opt_hamburguesas" onClick="hamburguesas()">Hamburguesas</a></li>
+                    <li><a href="#helados" id="opt_helados" onClick="helados()">Helados</a></li>
+                    <li><a href="#misuper" id="opt_misuper" onClick="miSuper()">Mi super</a></li>                                        
+                    <li><a href="#pescado" id="opt_pescado" onClick="pescado()">Pescado</a></li>
+                    <li><a href="#pizza" id="opt_pizza" onClick="pizza()">Pizza</a></li>
+                    <li><a href="#pollo" id="opt_pollo" onClick="pollo()">Pollo</a></li>
+                    <li><a href="#reposteria" id="opt_reposteria" onClick="reposteria()">Repostería</a></li>
+                    <li><a href="#res" id="opt_res" onClick="res()">Res</a></li>
+                    <li><a href="#sushi" id="opt_sushi" onClick="sushi()">Sushi</a></li>
+                    <li><a href="#tacos" id="opt_tacos" onClick="tacos()">Tacos</a></li>
+                    <li><a href="#verduras" id="opt_verduras" onClick="verduras()">Verduras</a></li>
+                </ul>
+            </div>
+<!-- Horizontal bebidas frias -->
+            <div class="panel grid" data-title="Bebidas frias" id="bebidas_frias">
+                 <ul class="list" id="bebidas_frias_horizontal">
+                </ul>
+            </div>
+<!-- Cuadros bebidas frias -->
+            <div class="panel grid" data-title="Bebidas frias" id="vista_cuadros_bfrias">
+                <div class="grid grid-photo" id="bebidas_frias_cuadros">
+                </div>     
+            </div>
+
+<!-- Horizontal bebidas calientes -->
+            <div class="panel grid" data-title="Bebidas calientes" id="bebidas_calientes">
+                 <ul class="list" id="bebidas_calientes_horizontal">
+                    
+                </ul>
+            </div>
+<!-- Cuadros bebidas calientes -->
+            <div class="panel grid" data-title="Bebidas calientes" id="vista_cuadros_bcalientes">
+                <div class="grid grid-photo" id="bebidas_calientes_cuadros">
+                </div>    
+            </div>
+
+<!-- Horizontal buffet -->
+            <div class="panel grid" data-title="Buffet" id="buffet">
+                <ul class="list" id="buffet_horizontal">
+                </ul>
+            </div>
+<!-- Cuadros buffet -->
+            <div class="panel grid" data-title="Buffet" id="vista_cuadros_buffet">
+                <div class="grid grid-photo" id="buffet_cuadros">
+                </div>  
+            </div>
+
+<!-- Horizontal frutas -->
+            <div class="panel grid" data-title="Frutas" id="frutas">
+                <ul class="list" id="frutas_horizontal">
+                </ul>
+            </div>
+<!-- Cuadros frutas -->
+            <div class="panel grid" data-title="Frutas" id="vista_cuadros_frutas">
+                <div class="grid grid-photo" id="frutas_cuadros">
+                </div> 
+            </div>
+
+<!-- Horizontal desayunos -->
+            <div class="panel grid" data-title="Desayunos" id="desayunos">
+                <ul class="list" id="desayunos_horizontal">
+                </ul>
+            </div>
+<!-- Cuadros desayunos -->
+            <div class="panel grid" data-title="Desayunos" id="vista_cuadros_desayunos">
+                <div class="grid grid-photo" id="desayunos_cuadros">
+                </div> 
+            </div>
+
+<!-- Horizontal hamburguesas -->
+            <div class="panel grid" data-title="Hamburguesas" id="hamburguesas">
+                <ul class="list" id="hamburguesas_horizontal">
+                </ul>
+            </div>
+<!-- Cuadros hamburguesas -->
+            <div class="panel grid" data-title="Hamburguesas" id="vista_cuadros_hamburguesas">
+                <div class="grid grid-photo" id="hamburguesas_cuadros">
+                </div> 
+            </div>
+
+<!-- Horizontal pescado -->
+            <div class="panel grid" data-title="Pescado" id="pescado">
+                <ul class="list" id="pescado_horizontal">
+                </ul>
+            </div>
+<!-- Cuadros pescado -->
+            <div class="panel grid" data-title="Pescado" id="vista_cuadros_pescado">
+                <div class="grid grid-photo" id="pescado_cuadros">
+                    <li><div class="grid-photo-box"><a href="#page6"><img src="" /></a></div></li>
+                </div> 
+            </div>
+
+<!-- Horizontal pizza -->
+            <div class="panel grid" data-title="Pizza" id="pizza">
+                <ul class="list" id="pizza_horizontal">
+                </ul>
+            </div>
+<!-- Cuadros pizza -->
+            <div class="panel grid" data-title="Pizza" id="vista_cuadros_pizza">
+                <div class="grid grid-photo" id="pizza_cuadros">
+                    <li><div class="grid-photo-box"><a href="#page6"><img src="" /></a></div></li>
+                </div> 
+            </div>
+
+<!-- Horizontal pollo -->
+            <div class="panel grid" data-title="Pollo" id="pollo">
+                <ul class="list" id="pollo_horizontal">
+                </ul>
+            </div>
+<!-- Cuadros pollo -->
+            <div class="panel grid" data-title="Pollo" id="vista_cuadros_pollo">
+                <div class="grid grid-photo" id="pollo_cuadros">
+                    <li><div class="grid-photo-box"><a href="#page6"><img src="" /></a></div></li>
+                </div> 
+            </div>
+
+<!-- Horizontal reposteria -->
+            <div class="panel grid" data-title="Reposteria" id="reposteria">
+                <ul class="list" id="reposteria_horizontal">
+                </ul>
+            </div>
+<!-- Cuadros reposteria -->
+            <div class="panel grid" data-title="Reposteria" id="vista_cuadros_reposteria">
+                <div class="grid grid-photo" id="reposteria_cuadros">
+                    <li><div class="grid-photo-box"><a href="#page6"><img src="" /></a></div></li>
+                </div> 
+            </div>
+
+<!-- Horizontal res -->
+            <div class="panel grid" data-title="Res" id="res">
+                <ul class="list" id="res_horizontal">
+                </ul>
+            </div>
+<!-- Cuadros res -->
+            <div class="panel grid" data-title="Res" id="vista_cuadros_res">
+                <div class="grid grid-photo" id="res_cuadros">
+                    <li><div class="grid-photo-box"><a href="#page6"><img src="" /></a></div></li>
+                </div> 
+            </div>
+
+<!-- Horizontal sushi -->
+            <div class="panel grid" data-title="Sushi" id="sushi">
+                <ul class="list" id="sushi_horizontal">
+                </ul>
+            </div>
+<!-- Cuadros sushi -->
+            <div class="panel grid" data-title="Sushi" id="vista_cuadros_sushi">
+                <div class="grid grid-photo" id="sushi_cuadros">
+                    <li><div class="grid-photo-box"><a href="#page6"><img src="" /></a></div></li>
+                </div> 
+            </div>
+
+<!-- Horizontal tacos -->
+            <div class="panel grid" data-title="Tacos" id="tacos">
+                <ul class="list" id="tacos_horizontal">
+                </ul>
+            </div>
+<!-- Cuadros tacos -->
+            <div class="panel grid" data-title="Tacos" id="vista_cuadros_tacos">
+                <div class="grid grid-photo" id="tacos_cuadros">
+                </div> 
+            </div>
+
+<!-- Horizontal verduras -->
+            <div class="panel grid" data-title="Verduras" id="verduras">
+                <ul class="list" id="verduras_horizontal">
+                </ul>
+            </div>
+<!-- Cuadros verduras -->
+            <div class="panel grid" data-title="Verduras" id="vista_cuadros_verduras">
+                <div class="grid grid-photo" id="verduras_cuadros">
+                </div> 
+            </div>
+
+<!-- Horizontal botana -->
+            <div class="panel grid" data-title="Botana" id="botana">
+                <ul class="list" id="botana_horizontal">
+                </ul>
+            </div>
+<!-- Cuadros botana -->
+            <div class="panel grid" data-title="Botana" id="vista_cuadros_botana">
+                <div class="grid grid-photo" id="botana_cuadros">
+                </div> 
+            </div>
+
+<!-- Horizontal eventos -->
+            <div class="panel grid" data-title="Eventos especiales" id="eventos">
+                <ul class="list" id="eventos_horizontal">
+                </ul>
+            </div>
+<!-- Cuadros eventos -->
+            <div class="panel grid" data-title="Eventos especiales" id="vista_cuadros_eventos">
+                <div class="grid grid-photo" id="eventos_cuadros">
+                </div> 
+            </div>
+
+<!-- Horizontal mi super -->
+            <div class="panel grid" data-title="Mi super" id="misuper">
+                <ul class="list" id="misuper_horizontal">
+                </ul>
+            </div>
+<!-- Cuadros mi super -->
+            <div class="panel grid" data-title="Mi super" id="vista_cuadros_misuper">
+                <div class="grid grid-photo" id="misuper_cuadros">
+                </div> 
+            </div>
+
+<!-- Horizontal helados -->
+            <div class="panel grid" data-title="Helados" id="helados">
+                <ul class="list" id="helados_horizontal">
+                </ul>
+            </div>
+<!-- Cuadros helados -->
+            <div class="panel grid" data-title="Helados" id="vista_cuadros_helados">
+                <div class="grid grid-photo" id="helados_cuadros">
+                </div> 
+            </div>
+
+<!-- Horizontal dulces -->
+            <div class="panel grid" data-title="Dulces" id="dulces">
+                <ul class="list" id="dulces_horizontal">
+                </ul>
+            </div>
+<!-- Cuadros dulces -->
+            <div class="panel grid" data-title="Dulces" id="vista_cuadros_dulces">
+                <div class="grid grid-photo" id="dulces_cuadros">
+                </div> 
+            </div>
+
+
+<!-- PRESUPUESTO -->
+            <div  class="panel" id="page4" data-title="Presupuesto">
+                <form class="form_dinero">
+                    <div class="formGroupHead">
+                        Min $<output for="fader" id="min">0.00 </output>
+                        <input type="range" min="0" max="1000" value="0" id=" dinero_min" step="50" oninput="outputUpdateMin(value)">
+
+                        <script>
+                        function outputUpdateMin(min) {
+                        document.querySelector('#min').value = min+".00";
+
+                        var max = document.getElementById("max").value;
+                        $.ajax({
+                            type: 'get',
+                            url: 'http://www.tastyfoods.com.mx/users/alimentos',                
+                            dataType: 'json',               
+                            success: function (data) {  
+                                var contador=20;
+                                $("#dinero").empty();  
+                                $(data).each(function (index, data) { 
+                                if (data.costo_unitario >= min && data.costo_unitario <= max) {
+                                    $("#dinero").append(
+                                        "<li class='lista_dinero'>"+
+                                            "<div class='grid-photo-box img-restaurant' prueba'id="+data.id+"><a href='#page"+contador+"'>"+
+                                                "<img id="+data.id+" src="+'http://www.tastyfoods.com.mx/'+data.imagen+" /></a></div>"+
+                                                "<div class='swipe-content'>"+
+                                                    "<p class='d_text'>"+
+                                                    "<b>"+data.nombreP+"</b><br>$"+data.costo_unitario+"</p></a>"+
+                                                "</div>"+
+                                        "</li>");
+                                    $('.pages').append(
+                                    "<div id='page"+contador+"' class='panel' data-footer='footerui' data-title='Platillo'>"+
+                                    "<div class='grid'>"+
+                                        "<div class='col2'>"+
+                                            "<a onClick='showCustomHtmlSheet()'><div class='platillo'><img src="+'http://www.tastyfoods.com.mx/'+data.imagen+" ></div></a>"+
+                                        "</div>"+
+
+                                       " <div class='col2'>"+
+                                        "<div class='columna2_producto'>"+
+                                        "<ul class='sabores_p'>"+
+                                            "<li class='dul'><a onClick='showPopupLimDul()'><img id='dul' src='../img/ic_dulceO_36.png'><h3>4.2</h3></a></li>"+
+                                            "<li class='sal'><a onClick='showPopupLimDul()'><img id='sal' src='../img/ic_salO_36.png'><h3>5.5</h3></a></li>"+
+                                            "<li class='chi'><a onClick='showPopupLimChi()'><img id='chi' src='../img/ic_chileO_36.png'><h3>8.9</h3></a></li>"+
+                                            "<li class='lim'><a onClick='showPopupLimEst()'><img id='lim' src='../img/ic_limonO_36.png'><h3>3.5</h3></a></li>"+
+                                        "</ul>"+
+                                        "<div class='dato_platillo'>"+
+                                            "<h2 class='nom_platillo' id='nombre_platillo'>"+data.nombreP+"</h2>"+
+                                            "<h2 class='precio_platillo' id='precio'>"+data.costo_unitario+"</h2>"+
+                                        "</div>"+
+                                        "<div id='container'>"+
+                                            "<section id='accordion'>"+
+                                                "<div>"+
+                                                    "<input type='radio' id='"+contador+"optionh-1' name='accordion-group'/>"+
+                                                    "<label for='"+contador+"optionh-1' >Descripción</label>"+
+                                                    "<article>"+
+                                                        "<p id='descripcion'>"+data.descripcion+"</p>"+
+                                                    "</article>"+
+                                                "</div>"+
+                                                "<div>"+
+                                                    "<input type='radio' id='"+contador+"optionh-2' name='accordion-group' />"+
+                                                    "<label for='"+contador+"optionh-2'>Restaurante</label>"+
+                                                    "<article>"+
+                                                        "<p id='nombre_restaurante'>"+data.nombre+"</p>"+
+                                                    "</article>"+
+                                                "</div>"+
+                                                "<div>"+
+                                                    "<input type='radio' id='"+contador+"optionh-3' name='accordion-group'/>"+
+                                                    "<label for='"+contador+"optionh-3' id='btn_direccion'>Direccion</label>"+
+                                                    "<article>"+
+                                                        "<p id='direccion'>"+data.direccion+"</p>"+
+                                                    "</article>"+
+                                                "</div>"+
+                                                "<div>"+
+                                                    "<input type='radio' id='"+contador+"optionh-4' name='accordion-group'/>"+
+                                                    "<label for='"+contador+"optionh-4' id='btn_telefono'>Teléfono</label>"+
+                                                    "<article>"+
+                                                        "<p id='telefono'>"+data.telefono+"</p>"+
+                                                    "</article>"+
+                                                "</div>"+
+                                                "<div>"+
+                                                    "<input type='radio' id='"+contador+"optionh-5' name='accordion-group'/>"+
+                                                    "<label for='"+contador+"optionh-5'>Tiempo de entrega</label>"+
+                                                    "<article>"+
+                                                        "<p id='tiempo'>15</p>"+
+                                                    "</article>"+
+                                                "</div>"+
+                                                "<div>"+
+                                                    "<input type='radio' />"+
+                                                    "<label class='res_envio'><a href='#page7' id='btn_reservacion' onclick='reservacion(id_restaurante)'>Reservación</a></label>"+
+                                                "</div>"+
+                                                "<div>"+
+                                                    "<input type='radio'  />"+
+                                                    "<label class='res_envio'><a href='#page9' id='btn_entrega' onclick='entregaDomicilio("+data.idP+","+data.costo_unitario+")'>Entrega a domicilio</a></label>"+
+                                                "</div>"+
+                                                "<input type='hidden' value="+data.idP+" />"+
+                                            "</section>"+
+                                            "</div>"+
+                                        "</div>"+
+                                        "</div>"+
+                                    "</div>"+
+                                "</div>");
+                                contador++;
+                                };
+                            }); 
+                                    
+                            }
+                        });       
+                        }
+                        </script>
+                    </div>
+                    <div class="formGroupHead">
+                        Max $<output for="fader" id="max">50.00 </output>
+                        <input type="range" min="0" max="1000" value="50" id="fader dinero_max" step="50" oninput="outputUpdateMax(value)">
+
+                        <script>
+                        function outputUpdateMax(max) {
+                        document.querySelector('#max').value = max+".00";
+                        var min = document.getElementById("min").value;
+
+                        $.ajax({
+                            type: 'get',
+                            url: 'http://www.tastyfoods.com.mx/users/alimentos',                
+                            dataType: 'json',               
+                            success: function (data) {  
+                                var contador=20;
+                                $("#dinero").empty();  
+                                $(data).each(function (index, data) { 
+                                if (data.costo_unitario >= min && data.costo_unitario <= max) {
+                                    $("#dinero").append(
+                                        "<li class='lista_dinero'>"+
+                                            "<div class='grid-photo-box img-restaurant' prueba'id="+data.id+"><a href='#page"+contador+"'>"+
+                                                "<img id="+data.id+" src="+'http://www.tastyfoods.com.mx/'+data.imagen+" /></a></div>"+
+                                                "<div class='swipe-content'>"+
+                                                    "<p class='d_text'>"+
+                                                    "<b>"+data.nombreP+"</b><br>$"+data.costo_unitario+"</p></a>"+
+                                                "</div>"+
+                                        "</li>");
+                                    $('.pages').append(
+                                    "<div id='page"+contador+"' class='panel' data-footer='footerui' data-title='Platillo'>"+
+                                    "<div class='grid'>"+
+                                        "<div class='col2'>"+
+                                            "<a onClick='showCustomHtmlSheet()'><div class='platillo'><img src="+'http://www.tastyfoods.com.mx/'+data.imagen+" ></div></a>"+
+                                        "</div>"+
+
+                                       " <div class='col2'>"+
+                                        "<div class='columna2_producto'>"+
+                                        "<ul class='sabores_p'>"+
+                                            "<li class='dul'><a onClick='showPopupLimDul()'><img id='dul' src='../img/ic_dulceO_36.png'><h3>4.2</h3></a></li>"+
+                                            "<li class='sal'><a onClick='showPopupLimDul()'><img id='sal' src='../img/ic_salO_36.png'><h3>5.5</h3></a></li>"+
+                                            "<li class='chi'><a onClick='showPopupLimChi()'><img id='chi' src='../img/ic_chileO_36.png'><h3>8.9</h3></a></li>"+
+                                            "<li class='lim'><a onClick='showPopupLimEst()'><img id='lim' src='../img/ic_limonO_36.png'><h3>3.5</h3></a></li>"+
+                                        "</ul>"+
+                                        "<div class='dato_platillo'>"+
+                                            "<h2 class='nom_platillo' id='nombre_platillo'>"+data.nombreP+"</h2>"+
+                                            "<h2 class='precio_platillo' id='precio'>"+data.costo_unitario+"</h2>"+
+                                        "</div>"+
+                                        "<div id='container'>"+
+                                            "<section id='accordion'>"+
+                                                "<div>"+
+                                                    "<input type='radio' id='"+contador+"optionh-1' name='accordion-group'/>"+
+                                                    "<label for='"+contador+"optionh-1' >Descripción</label>"+
+                                                    "<article>"+
+                                                        "<p id='descripcion'>"+data.descripcion+"</p>"+
+                                                    "</article>"+
+                                                "</div>"+
+                                                "<div>"+
+                                                    "<input type='radio' id='"+contador+"optionh-2' name='accordion-group' />"+
+                                                    "<label for='"+contador+"optionh-2'>Restaurante</label>"+
+                                                    "<article>"+
+                                                        "<p id='nombre_restaurante'>"+data.nombre+"</p>"+
+                                                    "</article>"+
+                                                "</div>"+
+                                                "<div>"+
+                                                    "<input type='radio' id='"+contador+"optionh-3' name='accordion-group'/>"+
+                                                    "<label for='"+contador+"optionh-3' id='btn_direccion'>Direccion</label>"+
+                                                    "<article>"+
+                                                        "<p id='direccion'>"+data.direccion+"</p>"+
+                                                    "</article>"+
+                                                "</div>"+
+                                                "<div>"+
+                                                    "<input type='radio' id='"+contador+"optionh-4' name='accordion-group'/>"+
+                                                    "<label for='"+contador+"optionh-4' id='btn_telefono'>Teléfono</label>"+
+                                                    "<article>"+
+                                                        "<p id='telefono'>"+data.telefono+"</p>"+
+                                                    "</article>"+
+                                                "</div>"+
+                                                "<div>"+
+                                                    "<input type='radio' id='"+contador+"optionh-5' name='accordion-group'/>"+
+                                                    "<label for='"+contador+"optionh-5'>Tiempo de entrega</label>"+
+                                                    "<article>"+
+                                                        "<p id='tiempo'>15</p>"+
+                                                    "</article>"+
+                                                "</div>"+
+                                                "<div>"+
+                                                    "<input type='radio' />"+
+                                                    "<label class='res_envio'><a href='#page7' id='btn_reservacion' onclick='reservacion(id_restaurante)'>Reservación</a></label>"+
+                                                "</div>"+
+                                                "<div>"+
+                                                    "<input type='radio'  />"+
+                                                    "<label class='res_envio'><a href='#page9' id='btn_entrega' onclick='entregaDomicilio("+data.idP+","+data.costo_unitario+")'>Entrega a domicilio</a></label>"+
+                                                "</div>"+
+                                                "<input type='hidden' value="+data.idP+" />"+
+                                            "</section>"+
+                                            "</div>"+
+                                        "</div>"+
+                                        "</div>"+
+                                    "</div>"+
+                                "</div>");
+                                contador++;
+                                };
+                            }); 
+                                    
+                            }
+                        });       
+                        }
+                        </script>
+                    </div>
+
+                    <div class="mas_container">
+
+                        <a class="button block green reg" href="#" id="btn_mas_dinero">Mas de $1,000.00</a>
+                    </div>    
+                </form >
+                
+                <ul class="list dinero" id="dinero"
+                </ul>
+            </div>
+
+<!-- CONFIGURACION -->
+            <div  class="panel" id="page5" data-title="Configuración">
+                <ul class="list">
+                    <li><a href="#tarjetas">Mis tarjetas</a></li>
+                    <li><a href="#datos_facturas">Datos de facturación</a></li>
+                    <li><a href="#contrasenia">Cambiar contraseña</a></li>
+                    <li><a href="javascript:cerrarSesion()" id="cerrar_sesion">Cerrar sesión</a></li>
+                </ul>
+            </div>
+            <div class="panel" data-title="Cambiar contraseña" id="contrasenia" data-footer="none">
+                <input name="contra_actual" type="password" placeholder="Contraseña actual" id="contra_actual" />
+                <input name="contra_nueva" type="password" placeholder="Contraseña nueva" id="contra_nueva" />
+                <input name="v_contra_nueva" type="password" placeholder="Verificar contraseña nueva" id="v_contra_nueva" />
+                <a class="button block green reg" id="btn_cambiar_contra">Cambiar contraseña</a>
+            </div>
+<!-- Mis tarjetas -->
+            <div class="panel" data-title="Mis tarjetas" id="tarjetas" data-footer="none">
+                <ul class="list">
+                    <li>
+                        <a href="#agregar_tarjeta" id="agregar_tarj">Agregar</a>
+                    </li>
+                    <li class="swipe-reveal">
+                        <div class="swipe-content">Tarjeta 1 </div>
+                        <div class="swipe-hidden">
+                            <a class="button archive" href="#">Eliminar</a>
+                        </div>
+                    </li>
+                    <li class="swipe-reveal">
+                        <div class="swipe-content">Tarjeta 2 </div>
+                        <div class="swipe-hidden">
+                            <a class="button archive" href="#">Eliminar</a>
+                        </div>
+                    </li>
+                    <li class="swipe-reveal">
+                        <div class="swipe-content">Tarjeta 3 </div>
+                        <div class="swipe-hidden">
+                            <a class="button archive" href="#">Eliminar</a>
+                        </div>
+                    </li>
+                    <li class="swipe-reveal">
+                        <div class="swipe-content">Tarjeta 4</div>
+                        <div class="swipe-hidden">
+                            <a class="button archive" href="#">Eliminar</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+<!-- Agregar tarjeta -->
+              <div class="panel" data-title="Agregar tarjeta" id="agregar_tarjeta" data-footer="none">
+                    <div class="col-2" id="opt_tarjeta">
+                        <a class="button verde" id="opt_credito_a" >Crédito</a>
+                    </div>
+                    <div class="col-2" id="opt_tarjeta">
+                        <a class="button rey" id="opt_debito_a" >Débito</a>
+                    </div>
+                    <div class="col-2 select_credito_a" id="opt_tarjeta">
+                        <select class="tarj_credito_a">
+                            <option value="Visa">Visa</option>
+                            <option value="MasterCard">MasterCard</option>
+                            <option value="American Express">American Express</option>
+                        </select>            
+                    </div>
+                    <div class="col-2 select_debito_a" id="opt_tarjeta">
+                        <select class="tarj_debito_a">
+                            <option value="HSBC">HSBC</option>
+                            <option value="Banamex">Banamex</option>
+                            <option value="Santander">Santander</option>
+                            <option value="Inbursa">Inbursa</option>
+                        </select> 
+                    </div>
+                    <div class="grid">
+                        <form  action="/process/payment" method="POST" id="card-form"role="form">
+                                <span class="card-errors"></span>
+                                <div class="form-group">
+                                    <label for="nombredelatarjeta">Nombre de la tarjeta</label>
+                                    <input type="text" class="form-control" id="nombredelatarjeta_a" placeholder="Ej. Tarjeta de la oficina"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="nombretarjetahabiente">Nombre del tarjeta habiente</label>
+                                    <input type="text" class="form-control" id="nombretarjetahabiente_a" placeholder="Ej. Oscar Robles Torres" size="20" data-conekta="card[name]" />
+                                </div>
+                                <div class="conekta_tarjeta">
+                                    <label for="tarjeta">Número de tarjeta</label>
+                                    <input type="text" class="form-control" id="tarjeta_a" placeholder="Ej. 87129873" size="20" data-conekta="card[number]" />
+                                </div>
+                                <div class="conekta_cvc">
+                                    <label for="test2">Código de validez de la tarjeta (CVC)</label>
+                                    <input  type="number" size="4" data-conekta="card[cvc]" id="cvc_a">
+                                </div>
+                                <div class="conekta_fecha">
+                                    <label for="test3">Fecha de expiración MM/AAAA</label>
+                                    <div class="exp">
+                                        <select id="month_a">
+                                            <option>01</option>
+                                            <option>02</option>
+                                            <option>03</option>
+                                            <option>04</option>
+                                            <option>05</option>
+                                            <option>06</option>
+                                            <option>07</option>
+                                            <option>08</option>
+                                            <option>09</option>
+                                            <option>10</option>
+                                            <option>11</option>
+                                            <option>12</option>
+                                        </select>
+
+                                        <select id="year_a">
+                                            <option>2015</option>
+                                            <option>2016</option>
+                                            <option>2017</option>
+                                            <option>2018</option>
+                                            <option>2019</option>
+                                            <option>2020</option>
+                                            <option>2021</option>
+                                            <option>2022</option>
+                                            <option>2023</option>
+                                            <option>2024</option>
+                                        </select>
+                                        <!-- <input type="text" size="2" id="month" placeholder="MM" data-conekta="card[exp_month]"/>
+                                        <input type="text" size="4" id="year" placeholder="AAAA" data-conekta="card[exp_year]"/> -->
+                                    </div>
+                                </div>
+                                <a class="button bajo" id="guardar_tarjeta">Guardar</a>
+                        </form>
+                    </div>
+                </div>
+
+<!-- Datos de facturacion -->
+             <div class="panel" data-title="Datos de facturación" id="datos_facturas" data-footer="none">
+                    <ul class="list">
+                        <li>
+                            <a href="#agregar_factura" id="agregar_datfactura">Agregar</a>
+                        </li>
+                        <li class="swipe-reveal">
+                            <div class="swipe-content">Nombre factura</div>
+                            <div class="swipe-hidden">
+                                <a class="button archive" href="#">Eliminar</a>
+                            </div>
+                        </li>
+                        <li class="swipe-reveal">
+                            <div class="swipe-content">Nombre factura</div>
+                            <div class="swipe-hidden">
+                                <a class="button archive" href="#">Eliminar</a>
+                            </div>
+                        </li>
+                        <li class="swipe-reveal">
+                            <div class="swipe-content">Nombre factura</div>
+                            <div class="swipe-hidden">
+                                <a class="button archive" href="#">Eliminar</a>
+                            </div>
+                        </li>
+                        <li class="swipe-reveal">
+                            <div class="swipe-content">Nombre factura</div>
+                            <div class="swipe-hidden">
+                                <a class="button archive" href="#">Eliminar</a>
+                            </div>
+                        </li>
+                    </ul>
+             </div>
+
+<!-- Agregar datos de facturacion -->
+            <div class="panel" data-title="Datos de facturación" id="agregar_factura" data-footer="none">
+                <div class="grid">
+                    <form  id="factura-form" role="form">
+                        <div class="form-group">
+                            <label for="nombredelafactura">Nombre para guardar los datos de facturación</label>
+                            <input type="text" class="form-control" id="nombredelafactura" placeholder="Ej. Oficina"/>
+                            <label for="nombre_factura">Nombre </label>
+                            <input type="text" id="nombre_factura" placeholder="Ej. Oscar Robles Torres"  />
+                            <label for="domiciliofiscal">Domicilio fiscal</label>
+                            <input type="text" id="domiciliofiscal" placeholder="Domicilio, calle y número" />
+                            <label for="rfc">Registro Federal de Contribuyentes (RFC)</label>
+                            <input  type="text"  id="rfc" placeholder="Ej. VECJ880326XXX">
+                            <label for="correo_factura">Correo electrónico</label>
+                            <input  type="text" id="correo_factura"  id="correo_factura" placeholder="Ej. Oscar@gmail.com">
+                        </div>
+                        <a class="button bajo" id="guardar_factura">Guardar</a>
+                    </form>
+                </div>
+            </div>
+
+          
+
+<!-- ALIMENTO/PRODUCTO -->
+           
+
+<!-- RESERVACION -->
+            <div  class="panel" id="page7" data-title="Reservación">
+                <div class="mesa">
+                    <div class="col-2">
+                        <label id="mesa_para">Mesa para:</label>
+                    </div>
+                    
+                    <div class="col-2">
+                    <select  id="mesa_para_select" onchange="habilitarInputMesa()">
+                        <option value="1">1</option>
+                        <option value="2" >2</option>
+                        <option value="3" >3</option>
+                        <option value="4" >4</option>
+                        <option value="5" >5</option>
+                        <option value="6">6</option>
+                        <option value="7" >7</option>
+                        <option value="8" >8</option>
+                        <option value="9" >9</option>
+                        <option value="10" >10</option>
+                        <option value="10+" >10+</option>
+                    </select> 
+                       <input type="number" id="mesa_para_input" /> 
+                    </div>
+                </div>
+                
+                <div class="mesa">
+                    <div class="col-2">
+                        <label id="mesa_para">A partir de:</label>
+                    </div>
+                    <div class="col-2">
+                        <input type="time" id="hora" />    
+                    </div>
+                </div>
+                    <a class="button green reg" href="#agregar_platillos_r" id="agregar_p_res" onclick="agregarPlatilloRes()">Agregar platillo</a>
+            
+                    <h2>Ubicación</h2>
+                <div id="mapa">
+
+                    
+                    <!-- <div id="mapa_reserv"></div> -->
+                </div>
+                    <a class="button block green reg" id="reservar">Reservar</a>
+            </div>
+
+<!-- CONFIRMAR RESERVACION -->
+            <div  class="panel" id="page8" data-title="Confirmar reservación">
+                <div class="confirmar tam">
+                <div class="confirmar_datos">
+                    <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer aliquam finibus ipsum, in posuere eros convallis et. Sed fermentum massa a fermentum egestas. Mauris facilisis eget lorem gravida gravida. Morbi in justo at diam aliquam ornare. In venenatis in leo vitae eleifend. In purus leo, efficitur vel feugiat ac.</h2>
+                </div>
+                    <div class="confirmar_button">
+                    <a class="button block green reg"  id="confirmar_reserv">Confirmar</a>
+                    </div>
+                </div>
+            </div>
+
+<!-- AGREGAR PRODUCTO RESERVACION -->
+            <div  class="panel" id="agregar_platillos_r" data-title="Reservación">
+                <div class="grid grid-photo" id="platillos_cuadros">
+                                
+                </div> 
+            </div>
+<!-- SELECCIONAR ALIMENTO RESERVACION-->
+        <div  class="panel" id="alimento_seleccionado" data-title="Reservación">
+            <div class="grid">
+                        <div class="col2">
+                             <a onClick="showCustomHtmlSheet()"><div class="platillo"><img src="img/icon.png"></div></a>
+                        </div>
+
+                        <div class="col2">
+                        <div class="columna2_producto">
+                        <ul class="sabores_p">
+                            <li class="dul"><a onClick="showPopupLimDul()"><img id="dul" src="img/ic_dulceO_36.png"><h3>4.2</h3></a></li>
+                            <li class="sal"><a onClick="showPopupLimDul()"><img id="sal" src="img/ic_salO_36.png"><h3>5.5</h3></a></li>
+                            <li class="chi"><a onClick="showPopupLimChi()"><img id="chi" src="img/ic_chileO_36.png"><h3>8.9</h3></a></li>
+                            <li class="lim"><a onClick="showPopupLimEst()"><img id="lim" src="img/ic_limonO_36.png"><h3>3.5</h3></a></li>
+                        </ul>
+                        <div class="dato_platillo">
+                            <h2 class="nom_platillo" id="nombre_platillo">Nombre</h2>
+                            <h2 class="precio_platillo" id="precio">$0.00</h2>
+                        </div>
+                        <div id="container">
+                            <section id="accordion">
+                                <div>
+                                    <input type="radio" id="option-52" name="accordion-group"/>
+                                    <label for="option-52" >Descripción</label>
+                                    <article>
+                                        <p id="descripcion">Lorem ipsum dolor sit amet</p>
+                                    </article>
+                                </div>
+                                <div>
+                                    <input type="radio" id="option-53" name="accordion-group"/>
+                                    <label for="option-53">Tiempo de entrega</label>
+                                    <article>
+                                        <p id="tiempo">Lorem ipsum dolor sit amet</p>
+                                    </article>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="" />
+                                    <label class="res_envio"><a href="#platillos_reservacion" id="btn_agregar_res" onclick="agregarPlatilloRes(id_platillo)">Agregar</a></label>
+                                </div>
+                            </section>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+            </div>
+<!-- ALIMENTOS SELECCIONADOS RESERVACION -->
+            <div  class="panel" id="platillos_reservacion" data-title="Reservación">
+                <div class="mesa">
+                    <div class="col-3">
+                        <label id="nombre_producto">Nombre</label>
+                    </div>
+                    <div class="col-3">
+                        <select>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                            <option>9</option>
+                            <option>10</option>
+                        </select>    
+                    </div>
+                    <div class="col-3">
+                        <label id="precio_producto_r">$0.00</label>
+                    </div>
+                </div>
+                <div class="mesa2">
+                    <div class="col23">
+                        <label class="total" id="total_label_r">Total:</label>
+                    </div>
+                        <div class="col13">
+                            <label class="total" id="total_r">$0.00</label>    
+                        </div>
+                    </div>
+                        <a class="button green reg" href="#agregar_platillos_r" id="agregar_plat_res" onclick="agregarOtroRes(id_platillo,id_restaurante)">Agregar otro platillo</a>
+                        <a class="button block green reg" href="#page7" onclick="aceptarPlatillos(id_platillo,id_restaurante)">Aceptar</a>
+            </div>
+
+<!-- AGREGAR PRODUCTO ENVIO-->
+            <div  class="panel" id="agregar_platillos_e" data-title="Restaurante">
+                <div class="grid grid-photo" id="platillos_cuadros">
+                        
+                </div> 
+            </div>
+<!-- SELECCIONAR ALIMENTO ENVIO-->
+            <div  class="panel" id="seleccionar_platillo_e" data-title="Restaurante">
+                <div class="grid">
+                    <div class="col2">
+                         <a onClick="showCustomHtmlSheet()"><div class="platillo"><img src="img/icon.png"></div></a>
+                    </div>
+                <div class="col2">
+                    <div class="columna2_producto">
+                        <ul class="sabores_p">
+                            <li class="dul"><a onClick="showPopupLimDul()"><img id="dul" src="img/ic_dulceO_36.png"><h3></h3></a></li>
+                            <li class="sal"><a onClick="showPopupLimDul()"><img id="sal" src="img/ic_salO_36.png"><h3></h3></a></li>
+                            <li class="chi"><a onClick="showPopupLimChi()"><img id="chi" src="img/ic_chileO_36.png"><h3></h3></a></li>
+                            <li class="lim"><a onClick="showPopupLimEst()"><img id="lim" src="img/ic_limonO_36.png"><h3></h3></a></li>
+                        </ul>
+                        <div class="dato_platillo">
+                            <h2 class="nom_platillo" id="nombre_platillo">Nombre</h2>
+                            <h2 class="precio_platillo" id="precio">$0.00</h2>                        
+                        </div>
+                        <div id="container">
+                            <section id="accordion">
+                                <div>
+                                    <input type="radio" id="option-50" name="accordion-group"/>
+                                    <label for="option-50" >Descripción</label>
+                                    <article>
+                                        <p id="descripcion">Lorem ipsum dolor sit amet</p>
+                                    </article>
+                                </div>
+                                <div>
+                                    <input type="radio" id="option-51" name="accordion-group"/>
+                                    <label for="option-51">Tiempo de entrega</label>
+                                    <article>
+                                        <p id="tiempo">Lorem ipsum dolor sit amet</p>
+                                    </article>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="" />
+                                    <label class="res_envio"><a href="#page9" id="btn_agregar_envio">Agregar</a></label>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+<!-- ENVIO A DOMICILIO -->
+            <div  class="panel" id="page9" data-title="Entrega a domicilio">
+                <ul class="productos_entrega">
+                <li>
+                    <div class="productos grid">
+                        <div class="sep">
+                            <div class="mesa">
+                                <div class="col-3">
+                                    <label for="test2" id="nombre_producto">Nombre</label>
+                                </div>
+                                <div class="col-3 div_select_cp">
+                                    <select class="cantidad_platillo" id="cantidad_platillo" >
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                        <option value="10+">10+</option>
+                                    </select>    
+                                    <input type="number" id="input_cantidad_platillo" /> 
+                                </div>                                 
+                                <div class="col13">
+                                    <label class="precio_producto">$0.00</label>
+                                </div>
+                            </div>     
+                        </div>
+                    </div>                    
+                </li>
+            </ul>
+                 <div class="mesa2">
+                       <div class="col23">
+                                    <label class="envio" id="total_label">Cargo por envio:</label>
+                                </div>
+                                <div class="col13">
+                                    <label  >15</label>    
+                                </div>
+                                <div class="col23">
+                                    <label class="total" id="total_label">Total:</label>
+                                </div>
+                                <div class="col13">
+                                    <label class="total" id="total"></label>    
+                                </div>
+                              
+                </div>
+                    <a class="button green reg" href="#agregar_platillos_e" id="agregar_plat_res">Agregar otro platillo</a>
+                    <a class="button yellow" href="#" id="aplicar_descuento">Aplicar descuento</a>
+                    <a class="button block green reg" id="asignar_dom" href="#page10" >Aceptar y asignar domicilio</a>
+                    
+            </div>
+
+    <!-- 2. Agregar domicilio -->
+            <div  class="panel" id="page10" data-title="Asignar domicilio">
+                <div id="address">Arrastra el marcador y selecciona el domicilio donde se hará tú entrega.</div>
+                    <div id="caract">
+                        <input name="caracteristica" type="text" placeholder="Característica del lugar" id="caracteristica"/>
+                    </div>
+                    <div class="map">
+                    </div>
+                    <div class="con_dom">
+                        <a class="button block green reg c_d" id="confirmar_dom">Confirmar domicilio</a>  
+                </div>
+            </div>
+    <!-- 3. Confirmar pedido, y domicilio -->
+            <div  class="panel" id="page12" data-title="Confirmar entrega">
+                <div class="confirmar tam">
+                <div class="confirmar_datos">
+              
+                </div>
+                    <div class="confirmar_button">
+                    <a class="button block green reg" id="confirmar_envio" href="#page11">Confirmar</a>
+                   <!--  <a class="button block green reg" id="confirmar_envio">Confirmar</a> -->
+                    </div>
+                </div>
+            </div> 
+    <!-- Despues de que lo confirme el usuario, el restaurante confirmara el envio -->
+    <!-- 4. El usuario pagara su pedido -->
+            <div  class="panel" id="page11" data-title="Datos de pago" >
+                <div class="col-2" id="opt_tarjeta">
+                    <a class="button verde" id="opt_credito" >Crédito</a>
+                </div>
+                <div class="col-2" id="opt_tarjeta">
+                    <a class="button rey" id="opt_debito" >Débito</a>
+                </div>
+                <div class="col-2 select_credito" id="opt_tarjeta">
+                    <select class="tarj_credito">
+                        <option value="Visa">Visa</option>
+                        <option value="MasterCard">MasterCard</option>
+                        <option value="American Express">American Express</option>
+                    </select>            
+                </div>
+                <div class="col-2 select_debito" id="opt_tarjeta">
+                    <select class="tarj_debito">
+                        <option value="HSBC">HSBC</option>
+                        <option value="Banamex">Banamex</option>
+                        <option value="Santander">Santander</option>
+                        <option value="Inbursa">Inbursa</option>
+                    </select> 
+                </div>
+                <div class="grid">
+                    <form  action="" id="card-form" role="form">
+                    <span class="card-errors"></span>
+                        <div class="form-group">
+                            <label for="nombredelatarjeta">Nombre de la tarjeta</label>
+                            <input type="text" class="form-control" id="nombredelatarjeta"  placeholder="Ej. Tarjeta de la oficina" />
+                        </div>
+                        <div class="form-group">
+                            <label for="nombretarjetahabiente">Nombre del tarjeta habiente</label>
+                            <input type="text" class="form-control" id="nombretarjetahabiente" placeholder="Ej. Oscar Robles Torres" size="20" data-conekta="card[name]" />
+                        </div>
+                        <div class="conekta_tarjeta">
+                            <label for="tarjeta">Número de tarjeta</label>
+                            <input type="text" class="form-control" id="tarjeta" placeholder="Ej. 87129873" size="20" data-conekta="card[number]" />
+                        </div>
+                        <div class="conekta_cvc">
+                            <label for="test2">Código de validez de la tarjeta (CVC)</label>
+                            <input  type="number" size="4" data-conekta="card[cvc]" id="cvc">
+                        </div>
+                        <div class="conekta_fecha">
+                            <label for="test3">Fecha de expiración MM/AAAA</label>
+                            <div class="exp">
+                                <select id="month">
+                                    <option>01</option>
+                                    <option>02</option>
+                                    <option>03</option>
+                                    <option>04</option>
+                                    <option>05</option>
+                                    <option>06</option>
+                                    <option>07</option>
+                                    <option>08</option>
+                                    <option>09</option>
+                                    <option>10</option>
+                                    <option>11</option>
+                                    <option>12</option>
+                                </select>
+
+                                <select id="year">
+                                    <option>2015</option>
+                                    <option>2016</option>
+                                    <option>2017</option>
+                                    <option>2018</option>
+                                    <option>2019</option>
+                                    <option>2020</option>
+                                    <option>2021</option>
+                                    <option>2022</option>
+                                    <option>2023</option>
+                                    <option>2024</option>
+                                </select>
+                                <!-- <input type="text" size="2" id="month" placeholder="MM" data-conekta="card[exp_month]"/>
+                                <input type="text" size="4" id="year" placeholder="AAAA" data-conekta="card[exp_year]"/> -->
+                            </div>
+                        </div>
+                        <a class="button bajo" href="#factura" id="factura_envio">Solicitar factura</a>
+                        <a class="button bajo" href="#seg_vista" >2da ocasión (Se eliminara este botón)</a>
+                    
+                    <div class="conekta_button">
+                    <a class="button block green reg"  id="realizarP">Pagar</a>
+                    </div>
+                      </form>
+                    </div>
+                
+                </div>
+
+                <div  class="panel" id="seg_vista" data-title="Opciones" >
+                    <div class="btns_pagar">
+                        <a class="button verde" >Nombre de la tarjeta</a>
+                        <a class="button cafe" href="#agregar_tarjeta_pagar" >Pagar con otra tarjeta</a>
+                        <a class="button bajo" href="#factura">Solicitar factura</a>
+                        <a class="button block green reg" href="#vista_horizontal" id="processPayment_pag">Pagar</a>
+                    </div>
+                </div>
+
+<!-- Agregar tarjeta pagar -->
+            <div class="panel" data-title="Agregar tarjeta" id="agregar_tarjeta_pagar" data-footer="none">
+                <div class="col-2" id="opt_tarjeta">
+                    <a class="button verde" id="opt_credito_ap" >Crédito</a>
+                </div>
+                <div class="col-2" id="opt_tarjeta">
+                    <a class="button rey" id="opt_debito_ap" >Débito</a>
+                </div>
+                <div class="col-2 select_credito_ap" id="opt_tarjeta">
+                    <select class="tarj_credito">
+                        <option>Visa</option>
+                        <option>MasterCard</option>
+                        <option>American Express</option>
+                    </select>            
+                </div>
+                <div class="col-2 select_debito_ap" id="opt_tarjeta">
+                    <select class="tarj_debito">
+                        <option>HSBC</option>
+                        <option>Banamex</option>
+                        <option>Santander</option>
+                        <option>Inbursa</option>
+                    </select> 
+                </div>
+                <div class="grid">
+                    <form  action="/process/payment" method="POST" id="card-form" role="form">
+                    <span class="card-errors"></span>
+                        <div class="form-group">
+                            <label for="nombredelatarjeta">Nombre de la tarjeta</label>
+                            <input type="text" class="form-control" id="nombredelatarjeta" placeholder="Ej. Tarjeta de la oficina"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="nombretarjetahabiente">Nombre del tarjeta habiente</label>
+                            <input type="text" class="form-control" id="nombretarjetahabiente" placeholder="Ej. Oscar Robles Torres" size="20" data-conekta="card[name]" />
+                        </div>
+                        <div class="conekta_tarjeta">
+                            <label for="tarjeta">Número de tarjeta</label>
+                            <input type="text" class="form-control" id="tarjeta" placeholder="Ej. 87129873" size="20" data-conekta="card[number]" />
+                        </div>
+                        <div class="conekta_cvc">
+                            <label for="test2">Código de validez de la tarjeta (CVC)</label>
+                            <input  type="number" size="4" data-conekta="card[cvc]" id="cvc">
+                        </div>
+                        <div class="conekta_fecha">
+                            <label for="test3">Fecha de expiración MM/AAAA</label>
+                            <div class="exp">
+                                <select id="month">
+                                    <option>01</option>
+                                    <option>02</option>
+                                    <option>03</option>
+                                    <option>04</option>
+                                    <option>05</option>
+                                    <option>06</option>
+                                    <option>07</option>
+                                    <option>08</option>
+                                    <option>09</option>
+                                    <option>10</option>
+                                    <option>11</option>
+                                    <option>12</option>
+                                </select>
+
+                                <select id="year">
+                                    <option>2015</option>
+                                    <option>2016</option>
+                                    <option>2017</option>
+                                    <option>2018</option>
+                                    <option>2019</option>
+                                    <option>2020</option>
+                                    <option>2021</option>
+                                    <option>2022</option>
+                                    <option>2023</option>
+                                    <option>2024</option>
+                                </select>                                
+                            </div>
+                        </div>
+                        <a class="button bajo" href="#seg_vista" >Guardar</a>
+                    </form>
+                </div>
+            </div>
+         
+<!-- FACTURAS -->
+            <div  class="panel" id="factura" data-title="Factura">
+                <div class="grid">
+                    <form  id="factura-form" role="form">
+                        <div class="form-group">
+                            <label for="nombredelafactura">Nombre para guardar los datos de facturación</label>
+                            <input type="text" class="form-control" id="nombredelafactura_e" placeholder="Ej. Oficina"/>
+                            <label for="nombre_factura">Nombre </label>
+                            <input type="text" id="nombre_factura_e" placeholder="Ej. Oscar Robles Torres"  />
+                            <label for="domiciliofiscal">Domicilio fiscal</label>
+                            <input type="text" id="domiciliofiscal_e" placeholder="Domicilio, calle y número" />
+                            <label for="rfc">Registro Federal de Contribuyentes (RFC)</label>
+                            <input  type="text"  id="rfc_e" placeholder="Ej. VECJ880326XXX">
+                            <label for="correo_factura">Correo electrónico</label>
+                            <input  type="text" id="correo_factura_e"  id="correo_factura" placeholder="Ej. Oscar@gmail.com">
+                        </div>
+                        <a class="button bajo" id="guardar_fact_envio">Guardar</a>
+                        <a class="button bajo" href="#seg_vista_facturas" >2da ocasión (Se eliminara este botón)</a>
+                    </form>
+                </div>
+            </div>
+
+            <div  class="panel" id="seg_vista_facturas" data-title="Factura">
+                <div class="btns_pagar">
+                    <a class="button bajo" >Nombre la factura</a>
+                    <a class="button cafe" href="#factura">Agregar datos de factura</a>
+                    <a class="button bajo" href="#page11" >Pagar</a>
+                </div>
+            </div>
+
+    <!-- 5. Mensaje de confirmacion -->  
+        </div>
+         
+
+<!-- BUSCADORES-->
+<!-- Platillos cuadros -->
+        <footer class="search_platillos_cuadros">
+            <div class="search_tam">
+            <div class="search_container">
+                <div class="search_platillos">
+                    <input name="search_platillos_cuadros" type="search" placeholder="Buscador" id="search_platillos_cuadros" onkeyup="buscarPlatillosCua()"/>
+                </div>
+                <div class="platillos_vista" id="vista_pcuadros">
+                    <a href="#vista_horizontal"><img src="img/ic_lines_36.png"></a>
+                </div>
+            </div>
+            </div>  
+        </footer>
+<!-- Platillos horizontal -->
+        <footer class="search_platillos_hor">
+            <div class="search_tam">
+            <div class="search_container">
+                <div class="search_platillos">
+                    <input name="search_platillos_hor" type="search" placeholder="Buscador" id="search_platillos_hor" onkeyup="buscarPlatillosHor()"/>    
+                </div>
+                <div class="platillos_vista" id="vista_phor">
+                    <a href="#vista_cuadros"><img src="img/ic_grid_36.png"></a>
+                </div>  
+            </div>
+            </div>    
+        </footer>
+
+<!-- Restaurantes cuadros -->
+        <footer class="search_restaurantes_cuadros">
+            <div class="search_tam">
+            <div class="search_container_res">
+                <div class="search_restaurantes">
+                    <input name="search_restaurantes_cuadros" type="search" placeholder="Buscador" id="search_restaurantes_cuadros" onkeyup="buscarRestaurantesCua()"/>
+                </div>
+                <div class="restaurantes_vista" id="vista_rcuadros">
+                    <a href="#page2"><img src="img/ic_lines_36.png"></a>
+                </div>
+            </div>
+            </div>    
+        </footer>
+<!-- Restaurantes horizontal -->
+        <footer class="search_restaurantes_hor">
+            <div class="search_tam">
+            <div class="search_container_res">
+                <div class="search_platillos">
+                    <input name="search_restaurantes_hor" type="search" placeholder="Buscador" id="search_restaurantes_hor" onkeyup="buscarRestaurantesHor()"/>
+                </div>
+                <div class="restaurantes_vista" id="vista_rhor">
+                    <a href="#vista_cuadros_rest"><img src="img/ic_grid_36.png"></a>
+                </div>
+            </div> 
+            </div>    
+        </footer>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?signed_in=true&callback=initMap">
+        </script>
+
+<!-- Categorias-->
+<!-- Bebidas frias cuadros -->
+        <footer class="search_bebidas_frias_c">
+            <div class="search_tam">
+            <div class="search_container">
+                <div class="search_bfrias">
+                    <input name="search_bfrias_c" type="search" placeholder="Buscador" id="search_bfrias_c" onkeyup="buscarFriasCua()"/>
+                </div>
+                <div class="bfrias_vista" id="vista_bfrias_h">
+                    <a href="#bebidas_frias"><img src="img/ic_lines_36.png"></a>
+                </div>
+            </div>
+            </div>  
+        </footer>
+<!-- Bebidas frias horizontal -->
+        <footer class="search_bebidas_frias_h">
+            <div class="search_tam">
+            <div class="search_container">
+                <div class="search_bfrias">
+                    <input name="search_bfrias_h" type="search" placeholder="Buscador" id="search_bfrias_h" onkeyup="buscarFriasHor()"/>
+                </div>
+                <div class="bfrias_vista" id="vista_bfrias_c">
+                    <a href="#vista_cuadros_bfrias"><img src="img/ic_grid_36.png"></a>
+                </div>
+            </div>
+            </div>  
+        </footer>
+
+<!-- Bebidas calientes cuadros -->
+        <footer class="search_bebidas_calientes_c">
+            <div class="search_tam">
+            <div class="search_container">
+                <div class="search_bcal">
+                    <input name="search_bcal_c" type="search" placeholder="Buscador" id="search_bcal_c" onkeyup="buscarCalientesCua()"/>
+                </div>
+                <div class="bcal_vista" id="vista_bcal_h">
+                    <a href="#bebidas_calientes"><img src="img/ic_lines_36.png"></a>
+                </div>
+            </div>
+            </div>  
+        </footer>
+<!-- Bebidas calientes horizontal -->
+            <footer class="search_bebidas_calientes_h">
+            <div class="search_tam">
+            <div class="search_container">
+                <div class="search_bcal">
+                    <input name="search_bcal_h" type="search" placeholder="Buscador" id="search_bcal_h" onkeyup="buscarCalientesHor()"/>
+                </div>
+                <div class="bcal_vista" id="vista_bcal_c">
+                    <a href="#vista_cuadros_bcalientes"><img src="img/ic_grid_36.png"></a>
+                </div>
+            </div>
+            </div>  
+        </footer>
+
+<!-- Buffet cuadros -->
+        <footer class="search_buffet_c">
+            <div class="search_tam">
+            <div class="search_container">
+                <div class="search_buffet">
+                    <input name="search_buffet_c" type="search" placeholder="Buscador" id="search_buffet_c" onkeyup="buscarBuffetCua()"/>
+                </div>
+                <div class="buffet_vista" id="vista_buffet_h">
+                    <a href="#buffet"><img src="img/ic_lines_36.png"></a>
+                </div>
+            </div>
+            </div>  
+        </footer>
+<!-- Buffet horizontal -->
+            <footer class="search_buffet_h">
+            <div class="search_tam">
+            <div class="search_container">
+                <div class="search_bcal">
+                    <input name="search_buffet_h" type="search" placeholder="Buscador" id="search_buffet_h" onkeyup="buscarBuffetHor()"/>
+                </div>
+                <div class="buffet_vista" id="vista_buffet_c">
+                    <a href="#vista_cuadros_buffet"><img src="img/ic_grid_36.png"></a>
+                </div>
+            </div>
+            </div>  
+        </footer>
+
+<!-- Frutas cuadros -->
+        <footer class="search_frutas_c">
+            <div class="search_tam">
+            <div class="search_container">
+                <div class="search_frutas">
+                    <input name="search_frutas_c" type="search" placeholder="Buscador" id="search_frutas_c" onkeyup="buscarFrutasCua()"/>
+                </div>
+                <div class="frutas_vista" id="vista_frutas_h">
+                    <a href="#frutas"><img src="img/ic_lines_36.png"></a>
+                </div>
+            </div>
+            </div>  
+        </footer>
+<!-- Frutas horizontal -->
+            <footer class="search_frutas_h">
+            <div class="search_tam">
+            <div class="search_container">
+                <div class="search_frutas">
+                    <input name="search_frutas_h" type="search" placeholder="Buscador" id="search_frutas_h" onkeyup="buscarFrutasHor()"/>
+                </div>
+                <div class="frutas_vista" id="vista_frutas_c">
+                    <a href="#vista_cuadros_frutas"><img src="img/ic_grid_36.png"></a>
+                </div>
+            </div>
+            </div>  
+        </footer>
+
+<!-- Desayunos cuadros -->
+        <footer class="search_desayunos_c">
+            <div class="search_tam">
+            <div class="search_container">
+                <div class="search_desayunos">
+                    <input name="search_desayunos_c" type="search" placeholder="Buscador" id="search_desayunos_c" onkeyup="buscarDesayunosCua()"/>
+                </div>
+                <div class="desayunos_vista" id="vista_desayunos_h">
+                    <a href="#desayunos"><img src="img/ic_lines_36.png"></a>
+                </div>
+            </div>
+            </div>  
+        </footer>
+<!-- Desayunos horizontal -->
+            <footer class="search_desayunos_h">
+            <div class="search_tam">
+            <div class="search_container">
+                <div class="search_desayunos">
+                    <input name="search_desayunos_h" type="search" placeholder="Buscador" id="search_desayunos_h" onkeyup="buscarDesayunosHor()"/>
+                </div>
+                <div class="desayunos_vista" id="vista_desayunos_c">
+                    <a href="#vista_cuadros_desayunos"><img src="img/ic_grid_36.png"></a>
+                </div>
+            </div>
+            </div>  
+        </footer>
+
+<!-- hamburguesas cuadros -->
+        <footer class="search_hamburguesas_c">
+            <div class="search_tam">
+            <div class="search_container">
+                <div class="search_hambuguesas">
+                    <input name="search_hamburguesas_c" type="search" placeholder="Buscador" id="search_hamburguesas_c" onkeyup="buscarHambCua()"/>
+                </div>
+                <div class="hamburguesas_vista" id="vista_hamburguesas_h">
+                    <a href="#hamburguesas"><img src="img/ic_lines_36.png"></a>
+                </div>
+            </div>
+            </div>  
+        </footer>
+<!-- hamburguesas horizontal -->
+            <footer class="search_hamburguesas_h">
+            <div class="search_tam">
+            <div class="search_container">
+                <div class="search_hambuguesas">
+                    <input name="search_hamburguesas_h" type="search" placeholder="Buscador" id="search_hamburguesas_h" onkeyup="buscarHambHor()"/>
+                </div>
+                <div class="hamburguesas_vista" id="vista_hamburguesas_c">
+                    <a href="#vista_cuadros_hamburguesas"><img src="img/ic_grid_36.png"></a>
+                </div>
+            </div>
+            </div>  
+        </footer>
+
+<!-- pescado cuadros -->
+        <footer class="search_pescado_c">
+            <div class="search_tam">
+            <div class="search_container">
+                <div class="search_pescado">
+                    <input name="search_pescado_c" type="search" placeholder="Buscador" id="search_pescado_c" onkeyup="buscarPescadoCua()"/>
+                </div>
+                <div class="pescado_vista" id="vista_pescado_h">
+                    <a href="#pescado"><img src="img/ic_lines_36.png"></a>
+                </div>
+            </div>
+            </div>  
+        </footer>
+<!-- pescado horizontal -->
+            <footer class="search_pescado_h">
+            <div class="search_tam">
+            <div class="search_container">
+                <div class="search_pescado">
+                    <input name="search_pescado_h" type="search" placeholder="Buscador" id="search_pescado_h" onkeyup="buscarPescadoHor()"/>
+                </div>
+                <div class="pescado_vista" id="vista_pescado_c">
+                    <a href="#vista_cuadros_pescado"><img src="img/ic_grid_36.png"></a>
+                </div>
+            </div>
+            </div>  
+        </footer>
+
+<!-- pizza cuadros -->
+        <footer class="search_pizza_c">
+            <div class="search_tam">
+            <div class="search_container">
+                <div class="search_pizza">
+                    <input name="search_pizza_c" type="search" placeholder="Buscador" id="search_pizza_c" onkeyup="buscarPizzaCua()"/>
+                </div>
+                <div class="pizza_vista" id="vista_pizza_h">
+                    <a href="#pizza"><img src="img/ic_lines_36.png"></a>
+                </div>
+            </div>
+            </div>  
+        </footer>
+<!-- pizza horizontal -->
+            <footer class="search_pizza_h">
+            <div class="search_tam">
+            <div class="search_container">
+                <div class="search_pizza">
+                    <input name="search_pizza_h" type="search" placeholder="Buscador" id="search_pizza_h" onkeyup="buscarPizzaHor()"/>
+                </div>
+                <div class="pizza_vista" id="vista_pizza_c">
+                    <a href="#vista_cuadros_pizza"><img src="img/ic_grid_36.png"></a>
+                </div>
+            </div>
+            </div>  
+        </footer>
+
+<!-- pollo cuadros -->
+        <footer class="search_pollo_c">
+            <div class="search_tam">
+            <div class="search_container">
+                <div class="search_pollo">
+                    <input name="search_pollo_c" type="search" placeholder="Buscador" id="search_pollo_c" onkeyup="buscarPolloCua()"/>
+                </div>
+                <div class="pollo_vista" id="vista_pollo_h">
+                    <a href="#pollo"><img src="img/ic_lines_36.png"></a>
+                </div>
+            </div>
+            </div>  
+        </footer>
+<!-- pollo horizontal -->
+            <footer class="search_pollo_h">
+            <div class="search_tam">
+            <div class="search_container">
+                <div class="search_pollo">
+                    <input name="search_pollo_h" type="search" placeholder="Buscador" id="search_pollo_h" onkeyup="buscarPolloHor()"/>
+                </div>
+                <div class="pollo_vista" id="vista_pollo_c">
+                    <a href="#vista_cuadros_pollo"><img src="img/ic_grid_36.png"></a>
+                </div>
+            </div>
+            </div>  
+        </footer>
+
+<!-- reposteria cuadros -->
+        <footer class="search_reposteria_c">
+            <div class="search_tam">
+            <div class="search_container">
+                <div class="search_reposteria">
+                    <input name="search_reposteria_c" type="search" placeholder="Buscador" id="search_reposteria_c" onkeyup="buscarReposCua()"/>
+                </div>
+                <div class="reposteria_vista" id="vista_reposteria_h">
+                    <a href="#reposteria"><img src="img/ic_lines_36.png"></a>
+                </div>
+            </div>
+            </div>  
+        </footer>
+<!-- reposteria horizontal -->
+            <footer class="search_reposteria_h">
+            <div class="search_tam">
+            <div class="search_container">
+                <div class="search_reposteria">
+                    <input name="search_reposteria_h" type="search" placeholder="Buscador" id="search_reposteria_h" onkeyup="buscarReposHor()"/>
+                </div>
+                <div class="reposteria_vista" id="vista_reposteria_c">
+                    <a href="#vista_cuadros_reposteria"><img src="img/ic_grid_36.png"></a>
+                </div>
+            </div>
+            </div>  
+        </footer>
+
+<!-- res cuadros -->
+        <footer class="search_res_c">
+            <div class="search_tam">
+            <div class="search_container">
+                <div class="search_res">
+                    <input name="search_res_c" type="search" placeholder="Buscador" id="search_res_c" onkeyup="buscarResCua()"/>
+                </div>
+                <div class="res_vista" id="vista_res_h">
+                    <a href="#res"><img src="img/ic_lines_36.png"></a>
+                </div>
+            </div>
+            </div>  
+        </footer>
+<!-- res horizontal -->
+            <footer class="search_res_h">
+            <div class="search_tam">
+            <div class="search_container">
+                <div class="search_res">
+                    <input name="search_res_h" type="search" placeholder="Buscador" id="search_res_h" onkeyup="buscarResHor()"/>
+                </div>
+                <div class="res_vista" id="vista_res_c">
+                    <a href="#vista_cuadros_res"><img src="img/ic_grid_36.png"></a>
+                </div>
+            </div>
+            </div>  
+        </footer>
+
+<!-- sushi cuadros -->
+        <footer class="search_sushi_c">
+            <div class="search_tam">
+            <div class="search_container">
+                <div class="search_sushi">
+                    <input name="search_sushi_c" type="search" placeholder="Buscador" id="search_sushi_c" onkeyup="buscarSushiCua()"/>
+                </div>
+                <div class="sushi_vista" id="vista_sushi_h">
+                    <a href="#sushi"><img src="img/ic_lines_36.png"></a>
+                </div>
+            </div>
+            </div>  
+        </footer>
+<!-- sushi horizontal -->
+            <footer class="search_sushi_h">
+            <div class="search_tam">
+            <div class="search_container">
+                <div class="search_sushi">
+                    <input name="search_sushi_h" type="search" placeholder="Buscador" id="search_sushi_h" onkeyup="buscarSushiHor()"/>
+                </div>
+                <div class="sushi_vista" id="vista_sushi_c">
+                    <a href="#vista_cuadros_sushi"><img src="img/ic_grid_36.png"></a>
+                </div>
+            </div>
+            </div>  
+        </footer>
+
+<!-- tacos cuadros -->
+        <footer class="search_tacos_c">
+            <div class="search_tam">
+            <div class="search_container">
+                <div class="search_tacos">
+                    <input name="search_tacos_c" type="search" placeholder="Buscador" id="search_tacos_c" onkeyup="buscarTacosCua()"/>
+                </div>
+                <div class="tacos_vista" id="vista_tacos_h">
+                    <a href="#tacos"><img src="img/ic_lines_36.png"></a>
+                </div>
+            </div>
+            </div>  
+        </footer>
+<!-- tacos horizontal -->
+            <footer class="search_tacos_h">
+            <div class="search_tam">
+            <div class="search_container">
+                <div class="search_tacos">
+                    <input name="search_tacos_h" type="search" placeholder="Buscador" id="search_tacos_h" onkeyup="buscarTacosHor()"/>
+                </div>
+                <div class="tacos_vista" id="vista_tacos_c">
+                    <a href="#vista_cuadros_tacos"><img src="img/ic_grid_36.png"></a>
+                </div>
+            </div>
+            </div>  
+        </footer>
+
+<!-- verduras cuadros -->
+        <footer class="search_verduras_c">
+            <div class="search_tam">
+            <div class="search_container">
+                <div class="search_verduras">
+                    <input name="search_verduras_c" type="search" placeholder="Buscador" id="search_verduras_c" onkeyup="buscarVerdurasCua()"/>
+                </div>
+                <div class="verduras_vista" id="vista_verduras_h">
+                    <a href="#verduras"><img src="img/ic_lines_36.png"></a>
+                </div>
+            </div>
+            </div>  
+        </footer>
+<!-- verduras horizontal -->
+            <footer class="search_verduras_h">
+            <div class="search_tam">
+            <div class="search_container">
+                <div class="search_verduras">
+                    <input name="search_verduras_h" type="search" placeholder="Buscador" id="search_verduras_h" onkeyup="buscarVerdurasHor()"/>
+                </div>
+                <div class="verduras_vista" id="vista_verduras_c">
+                    <a href="#vista_cuadros_verduras"><img src="img/ic_grid_36.png"></a>
+                </div>
+            </div>
+            </div>  
+        </footer>
+
+<!-- botana cuadros -->
+        <footer class="search_botana_c">
+            <div class="search_tam">
+            <div class="search_container">
+                <div class="search_botana">
+                    <input name="search_botana_c" type="search" placeholder="Buscador" id="search_botana_c" onkeyup="buscarBotanaCua()"/>
+                </div>
+                <div class="botana_vista" id="vista_botana_h">
+                    <a href="#botana"><img src="img/ic_lines_36.png"></a>
+                </div>
+            </div>
+            </div>  
+        </footer>
+<!-- botana horizontal -->
+            <footer class="search_botana_h">
+            <div class="search_tam">
+            <div class="search_container">
+                <div class="search_botana">
+                    <input name="search_botana_h" type="search" placeholder="Buscador" id="search_botana_h" onkeyup="buscarBotanaHor()"/>
+                </div>
+                <div class="botana_vista" id="vista_botana_c">
+                    <a href="#vista_cuadros_botana"><img src="img/ic_grid_36.png"></a>
+                </div>
+            </div>
+            </div>  
+        </footer>
+
+<!-- eventos cuadros -->
+        <footer class="search_eventos_c">
+            <div class="search_tam">
+            <div class="search_container">
+                <div class="search_eventos">
+                    <input name="search_eventos_c" type="search" placeholder="Buscador" id="search_eventos_c" onkeyup="buscarEventosCua()"/>
+                </div>
+                <div class="eventos_vista" id="vista_eventos_h">
+                    <a href="#eventos"><img src="img/ic_lines_36.png"></a>
+                </div>
+            </div>
+            </div>  
+        </footer>
+<!-- eventos horizontal -->
+            <footer class="search_eventos_h">
+            <div class="search_tam">
+            <div class="search_container">
+                <div class="search_eventos">
+                    <input name="search_eventos_h" type="search" placeholder="Buscador" id="search_eventos_h" onkeyup="buscarEventosHor()"/>
+                </div>
+                <div class="eventos_vista" id="vista_eventos_c">
+                    <a href="#vista_cuadros_eventos"><img src="img/ic_grid_36.png"></a>
+                </div>
+            </div>
+            </div>  
+        </footer>
+
+
+<!-- misuper cuadros -->
+        <footer class="search_misuper_c">
+            <div class="search_tam">
+            <div class="search_container">
+                <div class="search_misuper">
+                    <input name="search_misuper_c" type="search" placeholder="Buscador" id="search_misuper_c" onkeyup="buscarSuperCua()"/>
+                </div>
+                <div class="misuper_vista" id="vista_misuper_h">
+                    <a href="#misuper"><img src="img/ic_lines_36.png"></a>
+                </div>
+            </div>
+            </div>  
+        </footer>
+<!-- misuper horizontal -->
+            <footer class="search_misuper_h">
+            <div class="search_tam">
+            <div class="search_container">
+                <div class="search_misuper">
+                    <input name="search_misuper_h" type="search" placeholder="Buscador" id="search_misuper_h" onkeyup="buscarSuperHor()"/>
+                </div>
+                <div class="misuper_vista" id="vista_misuper_c">
+                    <a href="#vista_cuadros_misuper"><img src="img/ic_grid_36.png"></a>
+                </div>
+            </div>
+            </div>  
+        </footer>
+
+<!-- helados cuadros -->
+        <footer class="search_helados_c">
+            <div class="search_tam">
+            <div class="search_container">
+                <div class="search_helados">
+                    <input name="search_helados_c" type="search" placeholder="Buscador" id="search_helados_c" onkeyup="buscarHeladosCua()"/>
+                </div>
+                <div class="helados_vista" id="vista_helados_h">
+                    <a href="#helados"><img src="img/ic_lines_36.png"></a>
+                </div>
+            </div>
+            </div>  
+        </footer>
+<!-- helados horizontal -->
+            <footer class="search_helados_h">
+            <div class="search_tam">
+            <div class="search_container">
+                <div class="search_helados">
+                    <input name="search_helados_h" type="search" placeholder="Buscador" id="search_helados_h" onkeyup="buscarHeladosHor()"/>
+                </div>
+                <div class="helados_vista" id="vista_helados_c">
+                    <a href="#vista_cuadros_helados"><img src="img/ic_grid_36.png"></a>
+                </div>
+            </div>
+            </div>  
+        </footer>
+
+<!-- dulces cuadros -->
+        <footer class="search_dulces_c">
+            <div class="search_tam">
+            <div class="search_container">
+                <div class="search_dulces">
+                    <input name="search_dulces_c" type="search" placeholder="Buscador" id="search_dulces_c" onkeyup="buscarDulcesCua()"/>
+                </div>
+                <div class="dulces_vista" id="vista_dulces_h">
+                    <a href="#dulces"><img src="img/ic_lines_36.png"></a>
+                </div>
+            </div>
+            </div>  
+        </footer>
+<!-- dulces horizontal -->
+            <footer class="search_dulces_h">
+            <div class="search_tam">
+            <div class="search_container">
+                <div class="search_dulces">
+                    <input name="search_dulces_h" type="search" placeholder="Buscador" id="search_dulces_h" onkeyup="buscarDulcesHor()"/>
+                </div>
+                <div class="dulces_vista" id="vista_dulces_c">
+                    <a href="#vista_cuadros_dulces"><img src="img/ic_grid_36.png"></a>
+                </div>
+            </div>
+            </div>  
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Iniciar sesión</title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" type="text/css" href="css/af.ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+     <link rel="stylesheet" type="text/css" href="css/icons.css" />
+    <script type="text/javascript" charset="utf-8" src="js/jquery.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/fastclick.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/appframework.ui.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/validaciones.js"></script>
+    <script type="text/javascript">
+    window.addEventListener("resize", myFunction);
+
+ $.ajax({
+                type: 'get',
+                url: 'http://www.tastyfoods.com.mx/users/publicidad',                
+                dataType: 'json',               
+                 success: function (data) {  
+                    console.log(data);
+                    localstorage.setItem('img',data[0].imagen);
+                       if (w>h) {
+            document.getElementById("img_publicidad").src = 'http://www.tastyfoods.com.mx/'+data[0].imagen ;
+        }
+        else if(w<h)
+        {
+            document.getElementById("img_publicidad").src = 'http://www.tastyfoods.com.mx/'+data[0].imagen ;
+        }
+                }
+            });
+    function myFunction() {
+        var w = window.outerWidth;
+        var h = window.outerHeight;
+             $.ajax({
+                type: 'get',
+                url: 'http://www.tastyfoods.com.mx/users/publicidad',                
+                dataType: 'json',               
+                success: function (data) {  
+                    console.log(data);
+                    localstorage.setItem('img',data[0].imagen);
+                }
+            });
+        if (w>h) {
+            document.getElementById("img_inicio").src = 'http://www.tastyfoods.com.mx/'+data[0].imagen ;
+        }
+        else if(w<h)
+        {
+            document.getElementById("img_inicio").src = 'http://www.tastyfoods.com.mx/'+data[0].imagen ;
+        }
+    }
+
+    $(document).ready(function(){
+        $("#register").on("click", function(){
+            signUp();
+        });
+
+        $(".register").on("click", function(){
+            limpiarCampos();
+        });
+    });
+
+
+     //REGISTRO DEL USUARIO
+function signUp(){
+    //Verificar que todos los campos tengan valores
+    if ($("#nombre").val()=="" || $("#apellidos").val()=="" || $("#reg_correo").val()=="" || $("#edad").val()=="" || $("#codigo_postal").val()=="" || $("#sexo").val()=="" || $("#reg_password").val()=="" || $("#confirmpassword").val()=="" )
+    {
+        camposObligatorios();
+    } 
+    //Contraseñas coinciden
+    else if ($("#reg_password").val() === $("#confirmpassword").val())
+    {
+        //Extraer datos y efectuar registro
+        var nombre = $("#nombre").val();
+        var apellidos = $("#apellidos").val();
+        var correo = $("#reg_correo").val();
+        var password = $("#reg_password").val();
+        var edad = $("#edad").val();
+        var sexo = $("#sexo").val();
+        var codigo_postal = $("#codigo_postal").val();
+        localStorage.setItem('nombre',correo);
+        limpiarCampos();
+                
+        $.ajax({
+            type: "post", 
+            url: "http://www.tastyfoods.com.mx/registro", //CAMBIAR URL
+            data: ({nombre: nombre, apellidos: apellidos, correo: correo, password: password, edad: edad, sexo: sexo, codigo_postal: codigo_postal}),
+            cache: false,
+            dataType: "json",
+             success: function (data) {  
+                
+                 //Registro exitoso
+                    var opts={
+                        message:"¡Bienvenid@ a Tasty!",
+                        position:"tc",
+                        delay:2000,
+                        autoClose:true,
+                        type:"success"
+                    };
+                    $.afui.toast(opts);
+                    window.location.assign("publicidad.html");
+            }
+                        
+        });
+
+       
+    }
+    //Contraseñas no coinciden
+    else {
+        $.afui.popup({
+            title: "¡Alerta!",
+            message: "Las contraseñas deben coincidir",
+            cancelText: "Aceptar",
+            cancelCallback: function () {
+            },
+            cancelOnly: false
+        });
+        // var opts={
+        //     message:"Las contraseñas deben coincidir",
+        //     position:"tc",
+        //     delay:2000,
+        //     autoClose:true,
+        //     type:"error"
+        // };
+        // $.afui.toast(opts);
+    }
+    }
+
+    </script>
+</head>
+<body>
+    <div class="view" id="mainview">
+        <div class="publicidad">
+            <img id="img_inicio" src="img/opt3_white.png">
+        </div>
+        <div class="pages pos">
+<!-- INICIAR SESION -->
+            <div class="panel" data-title="Iniciar sesión" id="signin" data-footer="none">
+                <div class="espacio">
+                    <div class="logo">
+                        <img src="img/icon.png" id="img_logo">
+                    </div>
+                </div>
+                <div class="iniciar_sesion">
+                    <div class="is_datos">
+                        <input name="correo" type="text" placeholder="Correo" id="correo" />
+                        <input name="password" type="password" placeholder="Contraseña" id="password"/>
+                        <div class="opt_index">
+                            <div class="opt_register">
+                                <a href="#signup" style="text-align:center" class="register"><h2>¡Regístrate!</h2></a></div>
+                            <div class="opt_login">
+                                <a class="button green icon check" id="login"></a>
+                            </div>
+                        </div>
+                    </div>  
+                </div>          
+            </div>
+<!-- REGISTRATE -->
+            <div class="panel" data-title="Register" id="signup" data-footer="none">
+                <div class="regist">
+                    <br>
+                    <br>
+                    <h1>Regístrate</h1>
+                    <br>
+                    <br>
+                </div>
+                <!-- <div class="register_datos"> -->
+                <input name="nombre" type="text" placeholder="Nombre" id="nombre"/>
+                <input name="apellidos" type="text" placeholder="Apellido/os" id="apellidos"/>
+                <input name="reg_correo" type="text" placeholder="Correo" id="reg_correo"/>
+                <input name="reg_password" type="password" placeholder="Contraseña" id="reg_password"/>
+                <input name="confirmpassword" type="password" placeholder="Confirmar contraseña" id="confirmpassword"/>
+                <input name="edad" type="text"  placeholder="Edad"  min="18" max="99" id="edad" onfocus="this.type='number';"/>
+                <select id="sexo">
+                    <option value="" default selected>Sexo</option>
+                    <option>Femenino</option>
+                    <option>Masculino</option>
+                </select>
+                <input name="codigo_postal" type="text" placeholder="Código postal" id="codigo_postal" onfocus="this.type='number';"/>
+                <!-- </div>
+                 <div class="register_button"> -->
+                <a class="button block green reg" id="register">Iniciar sesión</a>
+                </div>
+      
+                <!-- </div>                 -->
+            </div>
+        </div>
+    </div>
+</body>
+</html>

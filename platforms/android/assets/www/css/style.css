@@ -1,0 +1,1678 @@
+
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+fieldset, label { margin: 0; padding: 0; }
+/*body{ margin: 20px; }
+h1 { font-size: 1.5em; margin: 10px; }*/
+
+/****** Style Star Rating Widget *****/
+
+.rating { 
+  border: none;
+  float: left;
+      margin-left: 20%;
+    margin-right: 20%;
+    width: 60%;
+}
+
+.rating > input[type="radio"] { display: none; } 
+.rating > label:before { 
+  margin: 5px;
+  font-size: 32px;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+
+}
+
+.rating > .half:before { 
+  content: "\f089";
+  position: absolute;
+}
+
+.rating > label { 
+  color: #ddd; 
+ float: right; 
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.rating > input:checked ~ label, /* show gold star when clicked */
+.rating:not(:checked) > label:hover, /* hover current star */
+.rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+.rating > input:checked + label:hover, /* hover current star when changing rating */
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.rating > input:checked ~ label:hover ~ label { color: #FFD700;  } 
+
+@font-face {
+  font-family: 'Roboto Light';
+  src: url('../fonts/Roboto-Light.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@media handheld, only screen and (min-width: 768px)
+.splitview > *:not(nav){
+  margin-left: 0px;
+}
+
+.accordion_hor{
+  height: 90%;
+}
+
+.android,
+.android .view,
+.android .view .pages {
+  font-family: 'Roboto Light';
+  src: url('../fonts/Roboto-Light.ttf') format('truetype');
+  background: #fff;
+  color: #000;
+  border-color: #fff;
+}
+
+/*#card-form .conekta_cvc label + input[type="text"]{
+  width:  20%;
+}*/
+
+..afPopup{
+
+    height: 457px;
+    width: 362px;
+}
+
+.android .afPopup > HEADER{
+  text-align: center;
+  
+}
+
+.android .afPopup{
+  background-color: rgba(255, 255, 255, 0.96);
+      border: solid 1px #FFF;
+      border-radius: 4px;
+      text-align: center;
+      height: 150px;
+}
+
+@media handheld, only screen and (min-width: 700px)
+.col2{
+  width: 50%;
+  float: left;
+}
+
+/*@media handheld, only screen and (min-width: 768px)
+.nav_opciones{
+  display: none;
+}*/
+
+#star1,
+#star2,
+#star3,
+#star4,
+#star5{
+  padding-right: 5%;
+}
+
+.android .afPopup > DIV{
+  border: none;
+  text-align: center;
+}
+
+.android .afPopup > FOOTER > A
+{
+  background: #ff9000;
+  color: white;
+  border-radius: 10px;
+}
+
+.android .afPopup > FOOTER{
+   background-color: rgba(255, 255, 255, 0.96);
+}
+
+.opt_index{
+  width: 100%;
+  display: -webkit-inline-box;
+}
+
+.opt_register,
+.opt_login{
+  width: 50%;
+}
+
+
+.opt_login{
+    text-align: end;
+}
+
+.afToastContainer.bc {
+  top: auto;
+  right: 0px;
+  bottom: 50%;
+  left: 0px;
+}
+#agregar_datfactura,
+#agregar_tarj{
+  content: none;
+  text-align: center;
+}
+
+.list > li > #agregar_tarj:after, .list > li .chevron:after{
+  content: none;
+}
+
+.list > li > #agregar_datfactura:after, .list > li .chevron:after{
+  content: none;
+}
+
+.swipe-hidden .archive, .swipe-hidden .archive.pressed{
+  background: #c1c1c1 !important;
+}
+
+.android .view header .backButton{
+  color: white;
+  font-size: 0px;
+}
+
+.android .agregar h3{
+  color: #FFA000;
+}
+
+.android .agregar h3.pressed{
+  color: #FF6D00;
+}
+
+.android .agregar h3:hover{
+  color: #FF6D00;
+}
+
+.android #swipetest{
+  width:100%;
+  height: 100%
+}
+
+.android .categorias > li > a{
+  font-size: 15px;
+}
+
+label + input[type="radio"]{
+  display: none;
+}
+
+.card{
+  height: 23%;
+      margin: 0 4rem 1rem;
+      padding:0;
+}
+.android .view footer{
+  background-color: #FF6D00; 
+  border-top: none;
+  width: 100%;
+}
+
+.android .dinero,
+.android .restaurantes{
+  background: #fff;
+  color: #000;
+}
+
+.android .view .search_dulces_c,
+.android .view .search_dulces_h,
+.android .view .search_helados_c,
+.android .view .search_helados_h,
+.android .view .search_misuper_c,
+.android .view .search_misuper_h,
+.android .view .search_eventos_c,
+.android .view .search_eventos_h,
+.android .view .search_botana_c,
+.android .view .search_botana_h,
+.android .view .search_verduras_c,
+.android .view .search_verduras_h,
+.android .view .search_tacos_c,
+.android .view .search_tacos_h,
+.android .view .search_sushi_c,
+.android .view .search_sushi_h,
+.android .view .search_res_c,
+.android .view .search_res_h,
+.android .view .search_reposteria_c,
+.android .view .search_reposteria_h,
+.android .view .search_pollo_c,
+.android .view .search_pollo_h,
+.android .view .search_pizza_c,
+.android .view .search_pizza_h,
+.android .view .search_pescado_c,
+.android .view .search_pescado_h,
+.android .view .search_hamburguesas_c,
+.android .view .search_hamburguesas_h,
+.android .view .search_desayunos_c,
+.android .view .search_desayunos_h,
+.android .view .search_frutas_c,
+.android .view .search_frutas_h,
+.android .view .search_buffet_c,
+.android .view .search_buffet_h,
+.android .view .search_bebidas_calientes_c,
+.android .view .search_bebidas_calientes_h,
+.android .view .search_bebidas_frias_c,
+.android .view .search_bebidas_frias_h,
+.android .view .search_platillos_cuadros,
+.android .view .search_platillos_hor,
+.android .view .search_restaurantes_cuadros,
+.android .view .search_restaurantes_hor
+{
+  background-color: white;
+}
+
+
+.android .s_platillos_c{
+  width: 100%;
+}
+
+.android .dinero li,
+.android .restaurantes li{
+  background: #fff;
+  color: #000;
+  border-bottom:1px solid #ccc;
+}
+
+.android .formGroupHead{
+  width: 100%;
+  text-align: center;
+  font-size: 16px;
+  padding-bottom: 2%;
+}
+
+.android .search_platillos{
+  width: 90%;
+}
+
+.android .restaurantes_vista,
+.android .platillos_vista{
+  width: 10%;
+}
+
+.android .view .nav_opciones{
+  background-color: #ff6d00;
+}
+
+.android .img-restaurant{
+  width: 40%;
+  height: 100%;
+}
+
+.android .img-platillo{
+  width: 40%;
+  height: 100%;
+}
+
+.android input[type="range"]{
+  margin-top: 7%;
+  width: 85%;
+}
+
+.android input[type="text"],
+.android input[type="password"]{
+  background:white;
+}
+
+.android .view .footer_platillos{
+  border-top: #FFFFFF;
+  background-color: #FFFFFF;
+  width: 100%;
+}
+
+.android .menu{
+  background-color: #FFA000;
+  color: #fff;
+}
+
+.android .menu > li > a{
+  padding: 30px 20px 30px 20px;
+  font-size: 17px;
+}
+
+.android .menu > li > a:after, .menu > li .chevron:after{
+  content: none;
+}
+
+.android .panel h2{
+  text-decoration: none;
+  color: #000;
+}
+
+.android .swipe-content{
+  width: 58%;
+}
+
+.android .lista_dinero .swipe-content{
+  text-align: right;
+}
+
+/*.android .lista_categorias .swipe-content
+.android .lista_platillo .swipe-content{
+  text-align: right;
+  margin: 15px 8px 0px -21px;
+}*/
+
+
+.android .lista_dinero{
+  width: 100%;
+  display: -webkit-inline-box;
+}
+
+.android .lista_restaurante,
+.android .lista_categorias,
+.android .lista_restaurante,
+.android .lista_platillo{
+  width: 100%;
+  display: -webkit-inline-box;
+}
+
+/*.android .lista_restaurante .swipe-content,
+.android .lista_categorias .swipe-content,
+.android .lista_restaurante .swipe-content,
+.android .lista_platillo .swipe-content{
+  text-align: right;
+  margin: 15px 8px 0px -9px;
+}*/
+
+/*.lista_dinero .swipe-content{
+  text-align: right;
+  margin: 0px -20px 0px -9px;
+}*/
+.lista_restaurante .swipe-content,
+.lista_categorias .swipe-content,
+.lista_restaurante .swipe-content,
+.lista_platillo .swipe-content{
+  text-align: right;
+  /*margin: 0px -20px 0px -9px;*/
+}
+
+.sabores_p{
+  width: 100%;
+  text-align: center;
+  padding-top: 2%;
+}
+
+.sabores_p li{
+  width: 20%;
+    display: -webkit-inline-box;
+    text-align: center;
+}
+
+.android .view header {
+  background: #FF6D00;
+  border-bottom: none;
+}
+
+.android .d_text{
+  font-size: 15px;
+}
+
+.android .icon.check::select{
+  background-color: #fff;
+}
+
+.android .button.pressed,
+.android header .button-grouped  > .button.pressed {
+  background: #FFA000;
+  border-color: #000;
+}
+
+.android .button.yellow.pressed{
+  background: #aad10c;
+  border-color: #000;
+}
+
+.android .button.yellow:hover{
+  background: #aad10c;
+  border-color: #000;
+}
+
+.android .register h2{
+  text-align: left;
+  color: #FFA000;
+}
+
+.android .register h2.pressed{
+  text-align: left;
+  color: #FF6D00;
+}
+
+.android .register h2:hover{
+  text-align: left;
+  color: #FF6D00;
+}
+
+.android input[type="range"]::-webkit-slider-thumb {
+  background: #FFA02B;
+}
+
+.android input:checked{
+  border-color: #000;
+  box-shadow: transparent;
+}
+
+/*.android input[type="radio"] + label:before{
+  content: none;
+}*/
+
+.agregar{
+  width: 100%;
+  height: 10%;
+}
+
+.swipe-agregar{
+  width: 100%;
+  text-align: center;
+}
+
+.agregar ul{
+  text-align: center;
+}
+
+.input-group{
+  padding-top: 0;
+}
+
+#accordion input[type="radio"],
+#accordion input[type="checkbox"]{
+  display: none;
+}
+
+/*.android:not(.light) input[type="radio"]:not(.toggle):checked + label:before{
+      background: #FFA000;
+}
+
+#accordion input[type="radio"] + label:before{
+  display: none;
+}*/
+
+#accordion label {
+  background: #eee;
+  border-radius: 7px;
+  cursor: pointer;
+  display: block;
+  margin-bottom: .125em;
+  padding: .6em 1em;
+  z-index: 20;
+  width: 100%;
+}
+
+#accordion label:hover {
+  background: #ccc;
+}
+
+#accordion input:checked + label {
+  background: #ccc;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  color: white;
+  margin-bottom: 0;
+  width: 100%;
+}
+
+#accordion article {
+  background: #f7f7f7;
+  height:0px;
+  overflow:hidden;
+  z-index:10;
+}
+
+#accordion article p {
+  padding: 1em;
+}
+
+#accordion input:checked ~ article {
+ border-bottom-left-radius: .25em;
+ border-bottom-right-radius: .25em;
+ height: auto;
+ margin-bottom: .125em;
+ width: 100%;
+}
+
+#accordion .res_envio{
+  background: #ff9000;
+  text-align: center;
+  color: white;
+  height: 37px;
+}
+
+#accordion{
+  height: 100%;
+}
+
+#accordion .res_envio:hover {
+  background: #ffa309;
+}
+#accordion .res_envio:checked + label {
+  background: #ffa309;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  color: white;
+  margin-bottom: 0;
+  width: 100%;
+}
+
+#address{
+  width: 100%;
+  /*height: 10%;*/
+  font-size: 16px;
+  text-align: center;
+  padding-top: 2%;
+  display: -webkit-inline-box;
+}
+
+.android .search_container_res{
+  width: 100%;
+  display: -webkit-inline-box;
+}
+
+.search_tam{
+  width: 100%;
+}
+
+.android .search_tam{
+  width: 100%;
+}
+body {
+  font-family: 'Roboto Light';
+  src: url('../fonts/Roboto-Light.ttf') format('truetype');
+  color: #616161;
+}
+
+
+a.opt_menu{
+  width: 150%;
+}
+
+a.img_menu{
+  width: 50%;
+}
+
+.img_menu img{
+  height: 80%;
+  padding-top: 6%;
+}
+
+
+.container_pub{
+  width: 100%;
+  text-align: end;
+      margin-top: 2%;
+}
+
+#swipetest{
+  width: 100%;
+  height: 100%;
+}
+
+.android .search_container{
+  width: 100%;
+  display: -webkit-inline-box;
+}
+
+.valoracion ul{
+  display: -webkit-inline-box;
+}
+
+.valoracion ul li {
+  border-bottom: none;
+  padding: 0;
+}
+
+.platillos_opt{
+  width: 100%;
+  display: -webkit-inline-box;
+}
+
+.search_dulces,
+.search_helados,
+.search_misuper,
+.search_eventos,
+.search_botana,
+.search_verduras,
+.search_tacos,
+.search_sushi,
+.search_res,
+.search_reposteria,
+.search_pollo,
+.search_pizza,
+.search_pescado,
+.search_hambuguesas,
+.search_desayunos,
+.search_frutas,
+.search_buffet,
+.search_bcal,
+.search_bfrias,
+.search_restaurantes,
+.search_platillos{
+  width: 90%;
+}
+
+
+
+.button.yellow{
+  width: 100%;
+  color: white;
+  border-radius: 10px;
+  background-color:#79c409;
+}
+
+.conekta_botones{
+  width: 100%;
+  height: 10%;
+}
+
+.view footer{
+  background-color: white;
+}
+
+.logo img{
+  height: auto;
+  padding:5px;
+}
+
+.logo{
+  height: 43%;
+  text-align: left;
+}
+.conekta_descuento{
+  width: 100%;
+}
+
+.android .dulces_vista,
+.android .helados_vista,
+.android .misuper_vista,
+.android .eventos_vista,
+.android .botana_vista,
+.android .verduras_vista,
+.android .tacos_vista,
+.android .sushi_vista,
+.android .res_vista,
+.android .reposteria_vista,
+.android .pollo_vista,
+.android .pizza_vista,
+.android .pescado_vista,
+.android .hamburguesas_vista,
+.android .desayunos_vista,
+.android .frutas_vista,
+.android .buffet_vista,
+.android .bcal_vista,
+.android .bfrias_vista,
+.android .restaurantes_vista,
+.android .platillos_vista{
+  width: 10%;
+}
+
+.is_datos{
+  height: 56%;
+}
+
+
+.mas_container{
+  width: 100%;
+  text-align: center;
+  padding-bottom: 2%;
+  border-bottom:1px solid #ccc;
+}
+
+.swipe-content h3{
+  color: black;
+}
+
+.formGroupHead{
+  margin:0%;
+}
+
+.valoracion img{
+  width: 70%;
+}
+
+.lista_restaurante,
+.lista_categorias,
+.lista_restaurante,
+.lista_platillo{
+  width: 100%;
+  display: -webkit-inline-box;
+}
+
+.lista_dinero{
+  width: 100%;
+  display: -webkit-inline-box;
+}
+
+.button.check{
+  background: #FF6D00;
+  border-color: #666;
+  border-radius: 20px;
+  border:none;
+  padding: 12px 14px;
+}
+
+.button.reg{
+  border-radius: 10px;
+  background-color: #FF6D00;
+  /*top: 40%;*/
+}
+
+/*.sabores_val li a img{
+  padding-right: 1%;
+}*/
+
+.button{
+  padding: 8px 8px;
+}
+
+.buttons_group{
+  width: 100%;
+}
+
+.ic_close img{
+      position: absolute;
+    right: 0;
+    Z-INDEX: 9000;
+    padding: 4%;
+}
+
+.android .view .pos{
+  position: static;
+  background:rgba(255, 255, 255, 0);
+}
+.dato_platillo{
+  display: -webkit-inline-box;
+  width: 100%;
+  height: 7%;
+}
+
+.dato_platillo_hor{
+  display: -webkit-inline-box;
+  width: 100%;
+  height: 10%;
+}
+
+#container_hor{
+  width: 50%;
+  height: 100%;
+}
+
+.d_text{
+  font-size: 15px;
+}
+
+.dinero,
+.restaurantes{
+  background: #fff;
+  color: #000;
+}
+
+.dinero li,
+.restaurantes li{
+  background: #fff;
+  color: #000;
+  border-bottom:1px solid #ccc;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.formGroupHead{
+  width: 50%;
+  text-align: center;
+  font-size: 15px;
+}
+
+.grid-photo {margin:3px -1px;}
+    .grid-photo:after {content:'';display:block;clear:both;}
+    .grid-photo li {position: relative; display:block; float:left; width: 10%; padding-bottom: 10%;}
+    .grid-photo .grid-photo-box {position: absolute;left: 3px;right: 3px;top: 3px;bottom: 3px; background-color: rgba(128,128,128,0.2);}
+    .grid-photo img {width:100%;height:100%}
+    @media only screen and (max-width : 1024px) {
+    .grid-photo li {width: 12.5%; padding-bottom: 12.5%;}
+    }
+    @media only screen and (max-width : 768px) {
+    .grid-photo li {width: 16.6%; padding-bottom: 16.6%;}
+    }
+    @media only screen and (max-width : 480px) {
+    .grid-photo li {width: 25%; padding-bottom: 25%;}
+    }
+    @media only screen and (max-width : 320px) {
+    .grid-photo li {width: 33.3%; padding-bottom: 33.3%;}
+    }
+
+header .menuButton{
+  float: left;
+}
+
+.icon {
+	left: 0px;
+}
+
+.img-restaurant{
+  width: 100%;
+  height: 100%;
+}
+
+.img-platillo{
+  width: 100%;
+  height: 100%;
+}
+
+input[type="range"]{
+  margin-top: 10%;
+}
+
+.inset{
+  width: 100%;
+  display: table;
+}
+
+.inset li{
+  display: inline-block;
+}
+
+.categorias > li > a{
+  font-size: 15px;
+}
+
+.login{
+  width: 50%;
+  text-align: right;
+}
+
+.menu{
+  height: 100%;
+  background-color: #FFA000;
+  color: #fff;
+}
+
+.menu li{
+  width: 100%;
+  display: inline-flex;
+  height: 19%;
+}
+
+.menu > li > a{
+  padding: 30px 20px 30px 20px;
+  font-size: 17px;
+}
+
+.menu > li > a:after, .menu > li .chevron:after{
+  content: none;
+}
+
+nav{
+  top: 44px; 
+  background: #FFA02B;
+  box-shadow: 0 0 0 0;
+}
+
+.nom_platillo{
+  width: 50%;
+}
+
+.panel a,
+.register a {
+  text-decoration: none;
+}
+
+.panel form{
+  width: 100%;
+}
+
+.panel h3{
+  text-decoration: none;
+  color: #000;
+}
+
+.platillo{
+  max-width: 100%;
+  padding: 0% 5% 5% 5%;
+}
+
+.platillo img{
+  height: auto;
+  width: 100%;
+}
+
+.tam_hor{
+  width: 100%;
+  display: -webkit-inline-box;
+}
+
+.platillo_hor{
+  width: 50%;
+}
+
+.precio_platillo{
+  width: 50%;
+  text-align: right;
+}
+
+.select_val select{
+  margin: 0;
+width: 28px;
+    margin-bottom: 7px;
+}
+
+
+#sabores_sel li{
+    padding-bottom: 10px;
+}
+
+.grid label{
+  text-align:left;
+}
+
+.mesa2{
+  text-align: end;
+}
+
+#mesa_para_input,
+.div_select_cp input[type="number"]{
+  display: none;
+}
+
+.productos_entrega{
+  border-bottom: 1px rgba(158, 158, 158, 0.7) solid;
+}
+
+.col-2 #mesa_para{
+  text-align: center;
+}
+
+.col-2 {
+    width: 50%;
+    float: left;
+  }
+
+.col-3 {
+    width: 33.3%;
+    float: left;
+  }
+
+  .col13 {
+    width: 33.3%;
+    float: left;
+  }
+  .col23 {
+    width: 66.6%;
+    float: left;
+  }
+
+.regist{
+  text-align:center;
+}
+
+#agregar_p_res,
+#guardar_tarjeta{
+  width: 100%;
+}
+
+.platillo_hor img{
+  width: 100%;
+  height: auto;
+}
+
+.container_agregar{
+  height: 14%;
+}
+
+.sabores_val{
+    width: 100%;
+  height: 10%;
+  padding: 10px;
+  text-align: center;
+  /*color: transparent;*/
+}
+
+.sabores_val li{
+  display: -webkit-inline-box;
+  padding-bottom: 10px;
+  /*width: 25%;*/
+}
+
+/*.sabores_val #dul_v h3{
+  padding-left: 30%;
+}
+
+.sabores_val #chi_v h3{
+  padding-left: 30%;
+}
+.sabores_val #sal_v h3{
+  padding-left: 30%;
+}
+.sabores_val #lim_v h3{
+  padding-left: 30%;
+}*/
+
+.valoracion_opts {
+  display: block;
+}
+
+.android .view .agradecimientos{
+  background-color: #f8931d;
+  color:white;
+  display: block;
+  text-align: center;
+}
+
+/*.swipe-content h4,
+.swipe-content h5{
+  color: #6b6b6b;
+  text-align: -webkit-right;
+}*/
+
+/*.swipe-content h4:hover,
+.swipe-content h5:hover{
+  color: #f7b100;
+}
+*/
+
+
+.swipe-content a{
+  color: #6b6b6b;
+  text-align: -webkit-right;
+}
+
+.swipe-content a:visited{
+  color: #f7b100;
+}
+
+.agradecimientos #img_logo{
+  width: 100%;
+  padding: 10%;
+  padding-top: 25%;
+}
+
+.android .lista_platillo .swipe-content{
+  margin: 0;
+}
+
+
+#lim_v,
+#chi_v,
+#sal_v,
+#dul_v{
+  padding-right: 12px;
+}
+
+.sabores{
+  display: -webkit-inline-box;
+  width: 100%;
+  height: 10%;
+  padding: 10px;
+  text-align: center;
+  color: transparent;
+}
+
+
+.sabores h3{
+  color: black;
+}
+.sabores li{
+  width: 25%;
+}
+
+.sabores_hor{
+  display: -webkit-inline-box;
+  width: 100%;
+  height: 10%;
+  padding: 10px;
+  text-align: center;
+  color: transparent;
+}
+
+.sabores_hor li{
+  width: 25%;
+}
+
+
+
+.swipe-content{
+  width: 100%;
+  text-align: center;
+  content: none;
+}
+
+/*.lista_dinero .swipe-content{
+  text-align: right;
+      margin: 8px 0px 0px -21px;
+}*/
+
+
+/*.lista_categorias .swipe-content,
+.lista_platillo .swipe-content{
+  text-align: right;
+  margin: 0px -20px 0px -9px;
+}*/
+
+.view header{
+  background: #FF6D00;
+  border-bottom: none;
+}
+
+.view header h1{
+  text-shadow: none;
+  padding: 7px 0;
+  top: 0px;
+  font-size: 17px;
+}
+
+
+input:checked{
+  border-color: #000;
+  box-shadow: transparent;
+}
+
+#container {
+  margin: 0 auto;
+  width: 100%;
+}
+
+label{
+  font-size: 15px;
+}
+
+input[type="checkbox"] + label:before{
+  content: none;
+}
+
+input[type="checkbox"]:checked + label:before{
+  content: none;
+}
+
+/*input[type="radio"]:checked + label:before{
+  content: none;
+}
+*/
+#id_restaurante{
+  display: none;
+}
+
+.entrega_pedido{
+  width: 100%;
+  display: -webkit-inline-box;
+}
+.entrega_label{
+  width: 32%;
+  height: 10%;
+}
+
+.entrega_label label{
+  width: 100%;
+  margin-top: 8%;
+}
+
+.entrega_total{
+  width: 100%;
+  display: -webkit-inline-box;
+  height:10%;
+ }
+
+.toda_entrega{
+  height: 77%;
+}
+.entrega_sub label{
+  width: 100%;
+  text-align: right;
+}
+
+.entrega_final label{
+  width: 100%;
+  text-align: right;
+}
+.domicilio_button,
+.agregar{
+  height: 10%;
+}
+
+.entrega_sub{
+  width: 64%;
+}
+.entrega_final{
+  width: 32%;
+}
+ #nombre_producto{
+  text-align: left;
+}
+
+#precio_producto{
+  text-align: right;
+}
+
+.cantidad{
+  width: 32%;
+}
+/*.mesa{
+  width: 100%;
+  display: -webkit-inline-box;
+  height: 10%;
+}*/
+
+.mesa_label{
+  width: 50%;
+}
+
+.mesa label {
+  width: 100%;
+  padding-top: 5%;
+  text-align: right;
+}
+
+
+.mesa2 label {
+  width: 100%;
+  padding-top: 5%;
+  text-align: end;
+}
+
+.ubicacion_h2{
+  text-align: center;
+  height: 10%;
+}
+
+.reservacion_button{
+  height: 10%;
+}
+
+.mesa .sel {
+  width: 50%;
+}
+
+.tam_mapa_reserv{
+  height: 100%;
+}
+
+#btn_valoracion,
+#agregar_plat_res{
+  width: 100%;
+}
+/*.mesa input,
+.mesa select {
+  width: 60%;
+  text-align: center;
+  margin-left: 15%;
+}
+
+*/
+.button{
+      margin-top: 1%;
+}
+
+
+
+
+.confirmar{
+    text-align: center;
+}
+
+div .tam{
+  /*width: 100%;*/
+  height: 100%;
+}
+
+select option[default] {
+    color: #ccc;
+}
+.register_datos{
+  height: 70%;
+}
+
+.register_button{
+  height: 10%;
+}
+
+.datos_factura,
+.confirmar_datos,
+.contra_datos{
+  height: 90%;
+}
+
+.confirmar_button,
+.contra_button{
+  height: 10%;
+}
+
+.mesa .cantidad{
+  text-align: center;
+}
+
+.mesa .total{
+  width: 100%;
+}
+
+.a_platillo{
+  width: 100%;
+}
+
+.title #page9{
+  font-size: 17px;
+}
+
+
+.con_dom,
+#caracteristica{
+  width: 100%;
+  display: block;
+}
+
+.map{
+  width: 100%;
+  height: 326px;
+}
+
+
+#mapa{
+  width: 100%;
+  height: 248px;
+}
+
+#page7 h2{
+  text-align: center;
+}
+
+.android .view footer > a.pressed:not(.button){
+  border-top: 1px solid #ffa91a;
+  background: #ffa91a;
+}
+
+.res_envio a{
+  color: white;
+}
+
+.exp span{
+  width: 50%;
+}
+
+.exp{
+  width: 100%;
+  display: inline-block;
+  text-align: left;
+}
+
+#card-form-add{
+  height: 90%;
+}
+.agregar{
+  padding: 5%;
+}
+
+#card-form select,
+#card-form-add input,
+#card-form input{
+  width: 82%;
+  float: left;
+  margin-left: 10%;
+}
+
+#card-form  .exp select,
+#card-form-add  .exp input,
+#card-form  .exp input{
+  width: 20%; 
+}
+
+#card-form-add label + input[type="text"],
+#card-form label + input[type="text"]{
+  width: 82%;
+  float: none;
+  margin-left: 10%;
+}
+
+.factura_button{
+  height: 10%;
+}
+
+.conekta_button,
+.conekta_descuento{
+  padding-top: 1%;
+}
+
+/*.conekta_cvc,
+.conekta_fecha,
+.conekta_tarjeta{
+  height: 20%;
+}
+*/
+.dato_producto{
+  display: -webkit-inline-box;
+text-align: left;
+width: 100%;
+
+}
+.button.green{
+      color: #fff;
+    text-shadow: none;
+    background: #ff9000;
+    border-color: #666;
+}
+
+.android .button.green.pressed{
+  background: #ffa817;
+  /*border-color: #000;*/
+}
+
+
+.button.rey{
+      color: #fff;
+    text-shadow: none;
+    background: #002b84;
+    /*border-color: #666;*/
+    width: 100%;
+    border-radius: 10px;
+}
+
+.select_debito_a,
+.select_credito_a,
+.select_debito_ap,
+.select_credito_ap,
+.select_debito,
+.select_credito{
+  display: none;
+}
+
+.android .button.rey.pressed{
+  background: #012bba;
+  /*border-color: #000;*/
+}
+
+.select_debito_a,
+.select_debito_ap,
+.select_debito{
+      float: right;
+}
+
+.valoracion_opts{
+  text-align: center;
+}
+
+.button.verde{
+      color: #fff;
+    text-shadow: none;
+    background: #5cbd33;
+    /*border-color: #666;*/
+    width: 100%;
+    border-radius: 10px;
+}
+
+.android .button.verde.pressed{
+  background: #92d050;
+  /*border-color: #000;*/
+}
+
+.btns_pagar{
+      margin-top: 130px;
+}
+
+.button.bajo{
+      color: #fff;
+    text-shadow: none;
+    background: #ffa91a;
+    /*border-color: #666;*/
+    width: 100%;
+    border-radius: 10px;
+}
+
+.android .button.bajo.pressed{
+  background: #ffb842;
+  /*border-color: #000;*/
+}
+
+.button.cafe{
+      color: #fff;
+    text-shadow: none;
+    background: #bc7d30;
+    /*border-color: #666;*/
+    width: 100%;
+    border-radius: 10px;
+}
+
+.android .button.cafe.pressed{
+  background: #d2974f;
+  /*border-color: #000;*/
+}
+
+.button.blue{
+      color: #fff;
+}
+
+.dato_precio{
+  text-align: end;
+}
+
+.android .afPopup > FOOTER > A#action{
+  display: none;
+}
+
+/*.list li{
+      padding: 10px 10px 10px 10px;
+}*/
+
+.swipe-content p{
+  margin: 0;
+}
+
+.afPopup > FOOTER > A#cancel{
+  float: inherit;
+}
+
+.android .lista_restaurante,
+.android .lista_platillo{
+  padding-top: 6px;
+    padding-bottom: 6px;
+}
+
+.dato_nom{
+  width: 100%;
+}
+
+.valoracion{
+  padding-top: 3px;
+      text-align: end;
+}
+
+
+/*div #signin{
+  background-image: url("../img/opt3_white.png"); 
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}*/
+
+/*.android .view .publicidad{
+   /*background-color: black;*/
+/*    background-image: url("../img/opt3_white.png"); 
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  display: block;
+}*/*/
+
+.android .view .publicidad{
+  /*background-image: url("../img/opt3_white.png"); */
+  /*background-size: 100% 100%;*/
+  /*background-repeat: no-repeat;*/
+  /*display: block;*/
+  height: 100%;
+  width: 100%;
+}
+
+.android .publicidad img{
+  height: 100%;
+  width:100%;
+}
+
+#opt_tarjeta{
+  padding: 2% 2%;
+}
+
+.dato_nom{
+  text-align: right;
+}
+
+.cambiar_vista{
+  width: 100%;
+  text-align: end;
+}
+
+/*.logo{
+  padding: 10%;
+}*/
+.espacio{
+  height: 50%;
+}
+
+.iniciar_sesion{
+  height: 50%;
+}
+
+/*.logo img{
+  height: auto;
+  width: 100%;
+}
+
+/*.iniciar_sesion{
+  padding-top: 10%;
+}*/
+
+#signup{
+  padding-top: 0%;
+      background-color: white;
+}
+
+
+.android #signup{
+  padding-top: 0%;
+      background-color: white;
+}
+
+.regist h1{
+  color: #FFA000;
+}
+
+.android #af_actionsheet{
+  background: #FFF;
+  border: none;
+      /*margin: 0;*/
+          height: 70%;
+    border-radius: 5px;
+        text-align: center;
+                    top: 70px;
+    left: 0;
+    /*bottom: 100px;*/
+        position: absolute;
+    right: 0;
+}
+.android #af_actionsheet a.cancel{
+  background: #FFF;
+  color: #FF6D00;
+  border-radius: 5px;
+  content: " ";
+}
+
+#img_platillo{
+  width: 96%;
+}
+
+#af_actionsheet{
+  left: 22px;
+    right: 22px;
+    top: 100px;
+}
+
