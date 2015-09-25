@@ -18,43 +18,18 @@
     <script type="text/javascript">
     window.addEventListener("resize", myFunction);
 
- $.ajax({
-                type: 'get',
-                url: 'http://www.tastyfoods.com.mx/users/publicidad',                
-                dataType: 'json',               
-                 success: function (data) {  
-                    console.log(data);
-                    aler('hi')
-                    localstorage.setItem('img',data[0].imagen);
-                       if (w>h) {
-            document.getElementById("img_publicidad").src = 'http://www.tastyfoods.com.mx/'+data[0].imagen ;
-        }
-        else if(w<h)
-        {
-            document.getElementById("img_publicidad").src = 'http://www.tastyfoods.com.mx/'+data[0].imagen ;
-        }
-                }
-            });
+
     function myFunction() {
         var w = window.outerWidth;
         var h = window.outerHeight;
-          $.ajax({
-                type: 'get',
-                url: 'http://www.tastyfoods.com.mx/users/publicidad',                
-                dataType: 'json',               
-                 success: function (data) {  
-                    console.log(data);
-                    localstorage.setItem('img',data[0].imagen);
-                       if (w>h) {
-            document.getElementById("img_publicidad").src = 'http://www.tastyfoods.com.mx/'+data[0].imagen ;
+
+        if (w>h) {
+            document.getElementById("img_publicidad").src = "img/opt3_white_h.png";
         }
         else if(w<h)
         {
-            document.getElementById("img_publicidad").src = 'http://www.tastyfoods.com.mx/'+data[0].imagen ;
+            document.getElementById("img_publicidad").src = "img/opt3_white.png";
         }
-                }
-            });
-     
     }
     </script>
 </head>

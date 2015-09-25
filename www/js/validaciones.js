@@ -1,4 +1,9 @@
 var tipoTarjeta = false;
+var platillosRes = false;
+var contPlatillos = 0;
+var platillosSelec = [];
+var nombreSelec = [];
+var cantidadSelec = [];
 var conketa_tarjeta=false;
  $(document).ready(function(){
     cerrarBuscadores();
@@ -91,7 +96,7 @@ var conketa_tarjeta=false;
                                     "</div>"+
                                     "<div>"+
                                         "<input type='radio' />"+
-                                        "<a href='#page7' id='btn_reservacion' onclick='reservacion()'><label class='res_envio'>Reservación</label></a>"+
+                                        "<a href='#page7' id='btn_reservacion' onclick='reservacion("+data.id_restaurante+")'><label class='res_envio'>Reservación</label></a>"+
                                     "</div>"+
                                     "<div>"+
                                         "<input type='radio'  />"+
@@ -189,7 +194,7 @@ var conketa_tarjeta=false;
                                     "</div>"+
                                     "<div>"+
                                         "<input type='radio' />"+
-                                        "<a href='#page7' id='btn_reservacion' onclick='reservacion()'><label class='res_envio'>Reservación</label></a>"+
+                                        "<a href='#page7' id='btn_reservacion' onclick='reservacion("+data.id_restaurante+")'><label class='res_envio'>Reservación</label></a>"+
                                     "</div>"+
                                     "<div>"+
                                         "<input type='radio'  />"+
@@ -443,7 +448,7 @@ var conketa_tarjeta=false;
                                 "</div>"+
                                 "<div>"+
                                     "<input type='radio' />"+
-                                    "<a href='#page7' id='btn_reservacion' onclick='reservacion()'><label class='res_envio'>Reservación</label></a>"+
+                                    "<a href='#page7' id='btn_reservacion' onclick='reservacion("+data.id_restaurante+")'><label class='res_envio'>Reservación</label></a>"+
                                 "</div>"+
                                 "<div>"+
                                     "<input type='radio'  />"+
@@ -515,7 +520,7 @@ var conketa_tarjeta=false;
                                 "</div>"+
                                 "<div>"+
                                     "<input type='radio' />"+
-                                    "<a href='#page7' id='btn_reservacion' onclick='reservacion()'><label class='res_envio'>Reservación</label></a>"+
+                                    "<a href='#page7' id='btn_reservacion' onclick='reservacion("+data.id_restaurante+")'><label class='res_envio'>Reservación</label></a>"+
                                 "</div>"+                              
                                 "<input type='hidden' class='miProducto' value="+data.idP+" />"+
                             "</section>"+
@@ -709,7 +714,7 @@ var conketa_tarjeta=false;
                                 "</div>"+
                                 "<div>"+
                                     "<input type='radio' />"+
-                                    "<a href='#page7' id='btn_reservacion' onclick='reservacion()'><label class='res_envio'>Reservación</label></a>"+
+                                    "<a href='#page7' id='btn_reservacion' onclick='reservacion("+data.id_restaurante+")'><label class='res_envio'>Reservación</label></a>"+
                                 "</div>"+
                                 "<div>"+
                                     "<input type='radio'  />"+
@@ -781,7 +786,7 @@ var conketa_tarjeta=false;
                                 "</div>"+
                                 "<div>"+
                                     "<input type='radio' />"+
-                                    "<a href='#page7' id='btn_reservacion' onclick='reservacion()'><label class='res_envio'>Reservación</label></a>"+
+                                    "<a href='#page7' id='btn_reservacion' onclick='reservacion("+data.id_restaurante+")'><label class='res_envio'>Reservación</label></a>"+
                                 "</div>"+                              
                                 "<input type='hidden' class='miProducto' value="+data.idP+" />"+
                             "</section>"+
@@ -798,6 +803,7 @@ var conketa_tarjeta=false;
                 }
             });
     });
+
 $('#aplicar_descuento').on('click',function(){
     var r = confirm("Verifica que has terminado de añadir todos tus platillos para obtener un mayor descuento");
     if (r == false) {
@@ -1090,7 +1096,7 @@ $('#aplicar_descuento').on('click',function(){
                                 "</div>"+
                                 "<div>"+
                                     "<input type='radio' />"+
-                                    "<a href='#page7' id='btn_reservacion' onclick='reservacion()'><label class='res_envio'>Reservación</label></a>"+
+                                    "<a href='#page7' id='btn_reservacion' onclick='reservacion("+data.id_restaurante+")'><label class='res_envio'>Reservación</label></a>"+
                                 "</div>"+
                                 "<div>"+
                                     "<input type='radio'  />"+
@@ -1162,7 +1168,7 @@ $('#aplicar_descuento').on('click',function(){
                                 "</div>"+
                                 "<div>"+
                                     "<input type='radio' />"+
-                                    "<a href='#page7' id='btn_reservacion' onclick='reservacion()'><label class='res_envio'>Reservación</label></a>"+
+                                    "<a href='#page7' id='btn_reservacion' onclick='reservacion("+data.id_restaurante+")'><label class='res_envio'>Reservación</label></a>"+
                                 "</div>"+                              
                                 "<input type='hidden' class='miProducto' value="+data.idP+" />"+
                             "</section>"+
@@ -1430,7 +1436,7 @@ function res_platillos(id_restaurante){
                     "</div>"+
                     "<div>"+
                         "<input type='radio' />"+
-                        "<a href='#page7' id='btn_reservacion' onclick='reservacion()'><label class='res_envio'>Reservación</label></a>"+
+                        "<a href='#page7' id='btn_reservacion' onclick='reservacion("+data.id_restaurante+")'><label class='res_envio'>Reservación</label></a>"+
                     "</div>"+
                     "<div>"+
                         "<input type='radio'  />"+
@@ -1688,86 +1694,388 @@ function cerrarSesion(){
 
 
 //HACER RESERVACION SIN PLATILLOS
-function reservacion(){
-        var myLatLng = {lat: -25.363, lng: 131.044}; //Sacarlas de la bd
+function reservacion(id_restaurante){
+    var id_restaurante = id_restaurante;
+    var mesa_para_input;
+    var mesa_select;
+    var hora;
 
-          var mapa_reserv = new google.maps.Map(document.getElementById('mapa'), {
-            zoom: 16,
-            center: myLatLng
-          });
+    $.ajax({
+        type: 'get',
+        url: 'http://www.tastyfoods.com.mx/users/restaurantes',             
+        dataType: 'json',               
+        success: function (data) {  
+                                 
+        $(data).each(function (index, data) {
+            if(data.id==id_restaurante){
+                var cords = data.coordenadas;
+                var patron=", ";
+                cords=cords.replace(patron,'');
 
-          var marker_Reserv = new google.maps.Marker({
-            position: myLatLng,
-            map: mapa_reserv,
+                var elem = cords.split('-');
+                var lati = elem[0];
+                var lngt = "-"+elem[1];
+
+                // var myLatLng = {lat: 24.035471, lng: -104.651422};
+
+                // // var myLatLng = {lat: lati, lng: lngt}; //Sacarlas de la bd
+
+                // var mapa_reserv = new google.maps.Map(document.getElementById('mapa'), {
+                //     zoom: 16,
+                //     center: myLatLng
+                // });
+
+                // var marker_Reserv = new google.maps.Marker({
+                //     position: myLatLng,
+                //     map: mapa_reserv,
+                // });
+            }
+        }); 
+        }
+    });  
+
+    // if (platillosRes) { //RESERVACION CON PLATILLOS
+    //     document.getElementById("agregar_p_res").href = "#"
+        
+                
+        // $(document).on('change','#mesa_para_select',function(){
+        //     if ($("#mesa_para_select").val()=="10+") {
+        //         $("#mesa_para_select").css("display","none");
+        //         $("#mesa_para_input").css("display","block");
+
+        //         document.getElementById("mesa_para_input").onkeyup = function() {
+        //             mesa_para_input = $("#mesa_para_input").val();
+        //         };
+
+        //         $("#reservar").on("click", function(){
+        //             if($("#mesa_para_input").val()==""){
+        //                 $.afui.popup({
+        //                     title: "¡Alerta!",
+        //                     message: "Ingresa para cuantas personas es tu reservación",
+        //                     cancelText: "Aceptar",
+        //                     cancelCallback: function () {
+        //                     },
+        //                     cancelOnly: false
+        //                 });
+        //             }else if($("#hora").val()==""){
+        //                 $.afui.popup({
+        //                     title: "¡Alerta!",
+        //                     message: "Ingresa la hora de tu reservación",
+        //                     cancelText: "Aceptar",
+        //                     cancelCallback: function () {
+        //                     },
+        //                     cancelOnly: false
+        //                 });
+        //             }else{
+        //                 mesa_para_input = $("#mesa_para_input").val();
+        //                 hora = $("#hora").val();
+        //                 document.getElementById("reservar").href = "#page8";
+        //                 //MOSTRAR TEXTO DE CONFIRMACION EN PAGE8
+        //                 $.ajax({
+        //                     type: 'get',
+        //                     url: 'http://www.tastyfoods.com.mx/users/restaurantes',             
+        //                     dataType: 'json',               
+        //                     success: function (data) {  
+        //                         var c_plat1 = $('#page8 .confirmar_datos');
+        //                         c_plat1.empty();
+        //                         $(data).each(function (index, data) {
+        //                             if (data.id==id_restaurante) {
+        //                                 $("#page8 .confirmar_datos").append(
+        //                                 "<h2>Usted esta por confirmar una reservación para "+mesa_para_input+" personas "+
+        //                                 "a las "+hora+" hrs. en "+data.nombre+", con ubicación en "+data.direccion+", y con un menu de platillos con un costo de $"+localStorage.getItem('costo_r')+"</h2>");
+        //                             };  
+        //                         });     
+        //                     }
+        //                 });
+
+
+        //                 $("#confirmar_reserv").on("click", function(){
+        //                     //GUARDAR LOS DATOS
+        //                     // id_restaurante
+        //                     // mesa_para_input
+        //                     // hora
+        //                     // var id_usuario; //Sesion del usuario
+        //                     limpiarCampos();
+                                    
+        //                     $.ajax({
+        //                         type: "post", 
+        //                         url: "http://www.tastyfoods.com.mx/users/reservaciones", //CAMBIAR URL
+        //                         data: ({id_restaurante: id_restaurante, mesa: mesa_select, hora: hora}),
+        //                         dataType: "json",
+        //                         success: function (data) {  
+        //                             $.afui.popup({
+        //                                 title: "¡Muchas gracias!",
+        //                                 message: "En unos momentos mas recibirás la confirmación de tu pedido.",
+        //                                 cancelText: "Aceptar",
+        //                                 cancelCallback: function () {
+        //                                     document.getElementById("confirmar_reserv").href = "#vista_horizontal";
+        //                                 },
+        //                                 cancelOnly: false
+        //                             });
+        //                         }   
+        //                     });
+        //                 });
+        //             }
+        //         });
+        //     }else{
+        //         $("#reservar").on("click", function(){
+        //             if($("#hora").val()==""){
+        //                 $.afui.popup({
+        //                     title: "¡Alerta!",
+        //                     message: "Ingresa la hora de tu reservación",
+        //                     cancelText: "Aceptar",
+        //                     cancelCallback: function () {
+        //                     },
+        //                     cancelOnly: false
+        //                 });
+        //             }else{
+        //                 mesa_select = $("#mesa_para_select").val();
+        //                 hora = $("#hora").val();
+        //                 document.getElementById("reservar").href = "#page8";
+                        
+        //                 //MOSTRAR TEXTO DE CONFIRMACION EN PAGE8
+        //                 $.ajax({
+        //                     type: 'get',
+        //                     url: 'http://www.tastyfoods.com.mx/users/restaurantes',             
+        //                     dataType: 'json',               
+        //                     success: function (data) {  
+        //                         var c_plat2 = $('#page8 .confirmar_datos');
+        //                         c_plat2.empty();
+        //                         $(data).each(function (index, data) {
+        //                             if (data.id==id_restaurante) {
+        //                                 $("#page8 .confirmar_datos").append(
+        //                                 "<h2>Usted esta por confirmar una reservación para "+mesa_select+" personas "+
+        //                                 "a las "+hora+" hrs. en "+data.nombre+", con ubicación en "+data.direccion+", y con un menu de platillos con un costo de $"+localStorage.getItem('costo_r')+"</h2>");
+        //                             };  
+        //                         });     
+        //                     }
+        //                 });
+
+        //                 $("#confirmar_reserv").on("click", function(){
+        //                     //GUARDAR LOS DATOS
+        //                     // id_restaurante
+        //                     // mesa_select
+        //                     // hora
+        //                     // var id_usuario; //Sesion del usuario
+        //                     limpiarCampos();
+                            
+        //                     $.ajax({
+        //                         type: "post", 
+        //                         url: "http://www.tastyfoods.com.mx/users/reservaciones", //CAMBIAR URL
+        //                         data: ({id_restaurante: id_restaurante, mesa: mesa_select, hora: hora}),
+        //                         dataType: "json",
+        //                         success: function (data) {  
+        //                             $.afui.popup({
+        //                                 title: "¡Muchas gracias!",
+        //                                 message: "En unos momentos mas recibirás la confirmación de tu pedido.",
+        //                                 cancelText: "Aceptar",
+        //                                 cancelCallback: function () {
+        //                                     document.getElementById("confirmar_reserv").href = "#vista_horizontal";
+        //                                 },
+        //                                 cancelOnly: false
+        //                             });
+        //                         }   
+        //                     });
+        //                 });
+        //             }
+        //         });
+        //     }
+        // });
+
+    // }else{ //RESERVACION SIN PLATILLOS
+
+        $(document).on('change','#mesa_para_select',function(){
+            if ($("#mesa_para_select").val()=="10+") {
+                $("#mesa_para_select").css("display","none");
+                $("#mesa_para_input").css("display","block");
+
+                document.getElementById("mesa_para_input").onkeyup = function() {
+                    mesa_para_input = $("#mesa_para_input").val();
+                };
+
+                $("#reservar").on("click", function(){
+                    if($("#mesa_para_input").val()==""){
+                        $.afui.popup({
+                            title: "¡Alerta!",
+                            message: "Ingresa para cuantas personas es tu reservación",
+                            cancelText: "Aceptar",
+                            cancelCallback: function () {
+                            },
+                            cancelOnly: false
+                        });
+                    }else if($("#hora").val()==""){
+                        $.afui.popup({
+                            title: "¡Alerta!",
+                            message: "Ingresa la hora de tu reservación",
+                            cancelText: "Aceptar",
+                            cancelCallback: function () {
+                            },
+                            cancelOnly: false
+                        });
+                    }else{
+                        mesa_para_input = $("#mesa_para_input").val();
+                        hora = $("#hora").val();
+                        document.getElementById("reservar").href = "#page8";
+                        //MOSTRAR TEXTO DE CONFIRMACION EN PAGE8
+                        $.ajax({
+                            type: 'get',
+                            url: 'http://www.tastyfoods.com.mx/users/restaurantes',             
+                            dataType: 'json',               
+                            success: function (data) {
+                                // var c_plat4 = $('#page8 .confirmar_datos');
+                                // c_plat4.empty();
+                                $(data).each(function (index, data) {
+                                    if (data.id==id_restaurante) {
+                                        $("#page8 .confirmar_datos").append(
+                                        "<h2>Usted esta por confirmar una reservación para "+mesa_para_input+" personas "+
+                                        "a las "+hora+" hrs. en "+data.nombre+", con ubicación en "+data.direccion+"</h2>");
+                                    };  
+                                });     
+                            }
+                        });
+
+
+                        $("#confirmar_reserv").on("click", function(){
+                            //GUARDAR LOS DATOS
+                            // id_restaurante
+                            // mesa_para_input
+                            // hora
+                            // var id_usuario; //Sesion del usuario
+                            limpiarCampos();
+                                    
+                            $.afui.popup({
+                                title: "¡Muchas gracias!",
+                                message: "En unos momentos mas recibirás la confirmación de tu reservación.",
+                                cancelText: "Aceptar",
+                                cancelCallback: function () {
+                                    document.getElementById("confirmar_reserv").href = "#vista_horizontal";
+                                },
+                                cancelOnly: false
+                            });
+
+                            // $.ajax({
+                            //     type: "post", 
+                            //     url: "http://www.tastyfoods.com.mx/users/reservaciones", //CAMBIAR URL
+                            //     data: ({id_restaurante: id_restaurante, mesa: mesa_select, hora: hora}),
+                            //     dataType: "json",
+                            //     success: function (data) {  
+                            //         $.afui.popup({
+                            //             title: "¡Muchas gracias!",
+                            //             message: "En unos momentos mas recibirás la confirmación de tu reservación.",
+                            //             cancelText: "Aceptar",
+                            //             cancelCallback: function () {
+                            //                 document.getElementById("confirmar_reserv").href = "#vista_horizontal";
+                            //             },
+                            //             cancelOnly: false
+                            //         });
+                            //     }   
+                            // });
+                        });
+                    }
+                });
+            }else{
+                $("#reservar").on("click", function(){
+                    if($("#hora").val()==""){
+                        $.afui.popup({
+                            title: "¡Alerta!",
+                            message: "Ingresa la hora de tu reservación",
+                            cancelText: "Aceptar",
+                            cancelCallback: function () {
+                            },
+                            cancelOnly: false
+                        });
+                    }else{
+                        mesa_select = $("#mesa_para_select").val();
+                        hora = $("#hora").val();
+                        document.getElementById("reservar").href = "#page8";
+                        
+                        //MOSTRAR TEXTO DE CONFIRMACION EN PAGE8
+                        $.ajax({
+                            type: 'get',
+                            url: 'http://www.tastyfoods.com.mx/users/restaurantes',             
+                            dataType: 'json',               
+                            success: function (data) {
+                                var c_plat4 = $('#page8 .confirmar_datos');
+                                c_plat4.empty();  
+                                $(data).each(function (index, data) {
+                                    if (data.id==id_restaurante) {
+                                        $("#page8 .confirmar_datos").append(
+                                        "<h2>Usted esta por confirmar una reservación para "+mesa_select+" personas "+
+                                        "a las "+hora+" hrs. en "+data.nombre+", con ubicación en "+data.direccion+"</h2>");
+                                    };  
+                                });     
+                            }
+                        });
+
+                        $("#confirmar_reserv").on("click", function(){
+                            //GUARDAR LOS DATOS
+                            // id_restaurante
+                            // mesa_select
+                            // hora
+                            // var id_usuario; //Sesion del usuario
+                            limpiarCampos();
+                            
+                             $.afui.popup({
+                                title: "¡Muchas gracias!",
+                                message: "En unos momentos mas recibirás la confirmación de tu reservación.",
+                                cancelText: "Aceptar",
+                                cancelCallback: function () {
+                                    document.getElementById("confirmar_reserv").href = "#vista_horizontal";
+                                },
+                                cancelOnly: false
+                            });
+
+                            // $.ajax({
+                            //     type: "post", 
+                            //     url: "http://www.tastyfoods.com.mx/users/reservaciones", //CAMBIAR URL
+                            //     data: ({id_restaurante: id_restaurante, mesa: mesa_select, hora: hora}),
+                            //     dataType: "json",
+                            //     success: function (data) {  
+                            //         $.afui.popup({
+                            //             title: "¡Muchas gracias!",
+                            //             message: "En unos momentos mas recibirás la confirmación de tu reservación.",
+                            //             cancelText: "Aceptar",
+                            //             cancelCallback: function () {
+                            //                 document.getElementById("confirmar_reserv").href = "#vista_horizontal";
+                            //             },
+                            //             cancelOnly: false
+                            //         });
+                            //     }   
+                            // });
+                        });
+                    }
+                });
+            }
         });
 
-    $("#reservar").on("click", function(){
-        if ($("#mesa").val()=="") {
-            $.afui.popup({
-                title: "¡Alerta!",
-                message: "Selecciona para cuantas personas es tu reservación",
-                cancelText: "Aceptar",
-                cancelCallback: function () {
-                },
-                cancelOnly: false
+        $("#agregar_p_res").on("click", function(){
+            $.ajax({
+                type: 'get',
+                url: 'http://www.tastyfoods.com.mx/users/alimentos',             
+                dataType: 'json',               
+                success: function (data) {  
+                    $(".agregar_platillos_r").empty(); 
+                    // var c_plat3 = $('#page8 .confirmar_datos');
+                    // c_plat3.empty();
+                    $(data).each(function (index, data) {
+                        if (data.id_restaurante==id_restaurante) {
+                            $(".agregar_platillos_r").append(
+                            "<li onClick='agregarPlaReservacion("+data.idP+","+id_restaurante+")'>"+
+                                "<div class='grid-photo-box'>"+
+                                    "<a href='#alimento_seleccionado'><img src="+'http://www.tastyfoods.com.mx/'+data.imagen+" /></a>"+
+                                "</div>"+
+                            "</li>");                        
+                        };   
+                    });     
+                }
             });
-            // var opts={
-            //     message:"Selecciona para cuantas personas es tu reservación",
-            //     position:"tc",
-            //     delay:2000,
-            //     autoClose:true,
-            //     type:"error"
-            // };
-            $.afui.toast(opts);
-        }else if($("#hora").val()==""){
-            $.afui.popup({
-                title: "¡Alerta!",
-                message: "Ingresa la hora de tu reservación",
-                cancelText: "Aceptar",
-                cancelCallback: function () {
-                },
-                cancelOnly: false
-            });
-            // var opts={
-            //     message:"Ingresa la hora de tu reservación",
-            //     position:"tc",
-            //     delay:2000,
-            //     autoClose:true,
-            //     type:"error"
-            // };
-            // $.afui.toast(opts);
-        }else{
-            var mesa = $("#mesa").val();
-            var hora = $("#hora").val();
-            var id_restaurante = id_restaurante;
-            var id_usuario; //Sesion del usuario
-            limpiarCampos();
-            document.getElementById("reservar").href = "#page8";
-            //MOSTRAR TEXTO DE CONFIRMACION EN PAGE8
+        });        
+                    
 
 
-            $("#confirmar_reserv").on("click", function(){
-                //GUARDAR LOS DATOS
-                //mesa
-                //hora
-                //id_restaurante
-                //id_usuario 
-
-                $.afui.popup({
-                    title: "¡Muchas gracias!",
-                    message: "En unos momentos mas recibirás la confirmación de tu reservación.",
-                    cancelText: "Aceptar",
-                    cancelCallback: function () {
-                        document.getElementById("confirmar_reserv").href = "#vista_horizontal";
-                    },
-                    cancelOnly: false
-                });
-            });
-        }
-
-    });
-    
+    // }
 }
+
 $(document).on('click','#btn_agregar_envio',function(e){
     var identificador = $(this).attr("name");
 
@@ -1821,7 +2129,8 @@ $(document).on('click','#btn_agregar_envio',function(e){
 
     });
 });
-$(document).on('click','#agregar_plat_res',function(){
+$(document).on('click','#agregar_plat_env',function(){
+
     var boton = $(this)
     var identificador =  localStorage.getItem('idProducto');
      $.ajax({
@@ -1899,9 +2208,10 @@ $(document).on('click','#agregar_plat_res',function(){
 
 });
 //AGREGAR PLATILLOS RESERVACION
-function agregarPlatilloRes(id_restaurante){
+function agregarPlatilloRes(){
     //MOSTRAR TODOS LOS PLATILLOS CON ID RESTAURANTE 
     //(Imagenes cuadros)
+    alert();
 }
 
 function platilloSelecRes(id_platillo){
@@ -1926,6 +2236,31 @@ function agregarOtroRes(id_platillo,id_restaurante){ //id_platillo es el platill
     //MOSTRAR TODOS LOS PLATILLOS CON ID RESTAURANTE
     //(Imagenes cuadros)
 }
+
+// function agregarPRes(){
+//     // alert("agregarPRes");
+//     $.ajax({
+//                 type: 'get',
+//                 url: 'http://www.tastyfoods.com.mx/users/alimentos',             
+//                 dataType: 'json',               
+//                 success: function (data) {  
+//                     $(".agregar_platillos_r").empty(); 
+//                     // var c_plat3 = $('#page8 .confirmar_datos');
+//                     // c_plat3.empty();
+//                     $(data).each(function (index, data) {
+//                         if (data.id_restaurante==id_restaurante) {
+//                             $(".agregar_platillos_r").append(
+//                             "<li onClick='agregarPlaReservacion("+data.idP+","+id_restaurante+")'>"+
+//                                 "<div class='grid-photo-box'>"+
+//                                     "<a href='#alimento_seleccionado'><img src="+'http://www.tastyfoods.com.mx/'+data.imagen+" /></a>"+
+//                                 "</div>"+
+//                             "</li>");                        
+//                         };   
+//                     });     
+//                 }
+//             });
+   
+// }
 
 //HACER RESERVACION CON PLATILLOS
 function aceptarPlatillos(id_platillo,id_restaurante){ 
@@ -2121,7 +2456,7 @@ function entregaDomicilio(id,costo){
             var address = $("#address").text();
               localStorage.setItem('direccion',address);
             limpiarCampos();
-            $("#page12 .confirmar_datos").append("<h4>Usted ha solicitado un pedido con un costo de: $"+localStorage.getItem('costo')+"  a la direccion "+localStorage.getItem('direccion')+",¿ desea continuar con su compra?</h4>");
+            $("#page12 .confirmar_datos").append("<h4>Usted ha solicitado un pedido con un costo de: $"+localStorage.getItem('costo')+"  a la direccion "+localStorage.getItem('direccion')+",¿Desea continuar con su compra?</h4>");
             document.getElementById("confirmar_dom").href = "#page12";
 
             $("#confirmar_envio").on("click", function(){
@@ -2274,16 +2609,484 @@ function camposObligatorios(){
     // $.afui.toast(opts);
 }
 
-function habilitarInputMesa(){
-    var mesa = document.getElementById("mesa_para_select").value; 
-   
-    if (mesa == "10+") {
-        $("#mesa_para_select").css("display","none");
-        $("#mesa_para_input").css("display","block");
-        var mesaPara = $("#mesa_para_input").val();
-    };
+function agregarPlaReservacion(id_platillo, id_restaurante){
+    var totalR;
+    var cant_r;
+    var cantidad_platillo_res;
+    var identificador;
+
+    $.ajax({
+        type: 'get',
+        url: 'http://www.tastyfoods.com.mx/users/alimentos',             
+        dataType: 'json',               
+        success: function (data) {  
+            $("#alimento_seleccionado").empty(); 
+
+            $(data).each(function (index, data) {
+
+                if (data.idP==id_platillo) {
+                    $("#alimento_seleccionado").append(
+                        "<div class='grid'>"+
+                            "<div class='col2'>"+
+                                "<a onClick='showCustomHtmlSheet()'><div class='platillo'><img src='http://www.tastyfoods.com.mx/"+data.imagen+"' /></div></a>"+
+                            "</div>"+
+                            "<div class='col2'>"+
+                                "<div class='columna2_producto'>"+
+                                    "<ul class='sabores_p'>"+
+                                        "<li class='dul'><a onClick='showPopupLimDul()'><img id='dul' src='img/ic_dulceO_36.png'><h3>4.2</h3></a></li>"+
+                                        "<li class='sal'><a onClick='showPopupLimSal()'><img id='sal' src='img/ic_salO_36.png'><h3>5.5</h3></a></li>"+
+                                        "<li class='chi'><a onClick='showPopupLimChi()'><img id='chi' src='img/ic_chileO_36.png'><h3>8.9</h3></a></li>"+
+                                        "<li class='lim'><a onClick='showPopupLimEst()'><img id='lim' src='img/ic_limonO_36.png'><h3>3.5</h3></a></li>"+
+                                    "</ul>"+
+                                    "<div class='dato_platillo'>"+
+                                        "<h2 class='nom_platillo' id='nombre_platillo'>"+data.nombreP+"</h2>"+
+                                        "<h2 class='precio_platillo' id='precio'>$"+data.costo_unitario+"</h2>"+
+                                    "</div>"+
+                                    "<div id='container'>"+
+                                        "<section id='accordion'>"+
+                                            "<div>"+
+                                                "<input type='radio' id='"+data.idP+"option-52' name='accordion-group'/>"+
+                                                "<label for='"+data.idP+"option-52' >Descripción</label>"+
+                                                "<article>"+
+                                                    "<p id='descripcion'>"+data.descripcion+"</p>"+
+                                                "</article>"+
+                                            "</div>"+
+                                            "<div>"+
+                                                "<input type='radio' id='"+data.idP+"option-53' name='accordion-group'/>"+
+                                                "<label for='"+data.idP+"option-53'>Tiempo de entrega</label>"+
+                                                "<article>"+
+                                                    "<p id='tiempo'>"+data.tiempo+"</p>"+
+                                                "</article>"+
+                                            "</div>"+
+                                            "<div>"+
+                                                "<input type='checkbox'/>"+
+                                                "<a href='#platillos_reservacion' id='btn_agregar_res' onclick='agregar_res("+data.idP+", "+data.nombre+", "+data.id_restaurante+")'><label class='res_envio'>Agregar</label></a>"+
+                                            "</div>"+
+                                        "</section>"+
+                                    "</div>"+
+                                "</div>"+
+                            "</div>"+
+                        "</div>");
+                };   
+            });     
+
+            // $("#btn_agregar_res").on("click", function(contPlatillos){
+            //     alert(contPlatillos);
+            //      $.ajax({
+            //         type: "post", 
+            //         url: "http://www.tastyfoods.com.mx/users/platilloEsp", //CAMBIAR URL
+            //         data: ({id : id_platillo }),
+            //         cache: false,
+            //         dataType: "json",
+            //          success: function (data) {  
+            //             $('.platillos_reservacion').append(
+            //                 "<li>"+
+            //                     "<div class='productos grid'>"+
+            //                         "<div class='sep'>"+
+            //                             "<div class='mesa'>"+
+            //                                 "<div class='col-3'>"+
+            //                                     "<label for='test2' id='nombre_producto'>"+data[0].nombreP+"</label>"+
+            //                                 "</div>"+
+            //                                 "<div class='col-3 div_select_cp_r'>"+
+            //                                     "<select class='cantidad_platillo_r' id='cantidad_platillo_"+data[0].idP+"'>"+
+            //                                         "<option value='1'>1</option>"+
+            //                                         "<option value='2'>2</option>"+
+            //                                         "<option value='3'>3</option>"+
+            //                                         "<option value='4'>4</option>"+
+            //                                         "<option value='5'>5</option>"+
+            //                                         "<option value='6'>6</option>"+
+            //                                         "<option value='7'>7</option>"+
+            //                                         "<option value='8'>8</option>"+
+            //                                         "<option value='9'>9</option>"+
+            //                                         "<option value='10'>10</option>"+
+            //                                         "<option value='10+'>10+</option>"+
+            //                                     "</select>"+
+            //                                     "<input type='number' id='input_cantidad_platillo_"+data[0].idP+"' />"+
+            //                                 "</div>"+
+            //                                 "<div class='col13'>"+
+            //                                     "<label name='"+data[0].costo_unitario+"' class='precio_producto_r'>"+data[0].costo_unitario+"</label>"+
+            //                                 "</div>"+
+            //                             "</div>"+
+            //                             "<input type='hidden' class='pr' value='"+data[0].idP+"' />"+
+            //                         "</div>"+
+            //                     "</div>"+
+            //                 "</li>");  
+            //                 totalPagarRes();        
+            //                 var dataID=data[0].idP;
+            //                 // alert(dataID);
+            //                 // $('#btn_agregar_res').each(function () {
+            //                 //      platillosSelec [i] = this.value;
+            //                 //      alert(platillosSelec [i]);
+            //                 //         i++;
+            //                 // });
+
+
+
+            //                 $(document).on('change','#cantidad_platillo_'+dataID,function(){
+            //                     cantidad_platillo_res = document.getElementById('cantidad_platillo_'+dataID).value;
+            //                     signo = "$";
+            //                     localStorage.setItem('cantidad_res',cantidad_platillo_res);
+
+            //                     //MOSTRAR INPUT AL SELECCIONAR 10+
+            //                     if (cantidad_platillo_res=="10+") {
+            //                         $("#cantidad_platillo_"+dataID).css("display","none");
+            //                         $("#input_cantidad_platillo_"+dataID).css("display","block");
+
+            //                         document.getElementById("input_cantidad_platillo_"+dataID).onkeyup = function() {
+            //                             var input_cantidad_plat_res = $("#input_cantidad_platillo_"+dataID).val();
+                                        
+            //                             cant_r = $(this).parents('.mesa').find('.precio_producto_r');  
+                               
+            //                             totalR = input_cantidad_plat_res*$(cant_r).attr("name");
+            //                             cant_r.text(totalR);
+            //                             totalPagarRes();
+
+            //                             var sum_r = Number($('#platillos_reservacion #total_r').text());
+                                 
+            //                             localStorage.setItem('costo_r',sum_r);
+            //                         };
+            //                     };       
+
+            //                     //MOSTRAR PRECIO DEPENDIENDO DEL CAMBIO DEL SELECT  
+            //                     cant_r = $(this).parents('.mesa').find('.precio_producto_r');  
+                               
+            //                     totalR = cantidad_platillo_res*$(cant_r).attr("name");
+            //                     cant_r.text(totalR);
+            //                     totalPagarRes();
+            //                     var sum_r = Number($('#platillos_reservacion #total_r').text());
+                                 
+            //                     localStorage.setItem('costo_r',sum_r);
+                                
+            //                 });
+
+            
+            //             }
+            
+            //     });
+            
+            // });
+            // totalPagarRes();
+
+
+            // $(document).on('click','#agregar_plat_res',function(e){
+            //     // alert();
+            //     // var boton = $(this);
+            //     identificador =  id_platillo;
+            //     // alert(identificador);
+            //      $.ajax({
+            //             type: "post", 
+            //             url: "http://www.tastyfoods.com.mx/users/alimentos", //CAMBIAR URL
+            //             data: ({id : identificador }),
+            //             cache: false,
+            //             dataType: "json",
+            //              success: function (data) {  
+                            
+            //                 contador = 40;
+            //                 var div = $('#agregar_platillos_r #platillos_cuadros');
+            //                 div.empty();
+            //                  $(data).each(function (index, data) { 
+                                
+            //                  $('.pages').append(
+            //                  " <div  class='panel' id='seleccionar_platillo_r"+contador+"' data-title='Restaurante'>"+
+            //                 "<div class='grid'>"+
+            //                     "<div class='col2'>"+
+            //                          "<a onClick='showCustomHtmlSheet()''><div class='platillo'><img src="+'http://www.tastyfoods.com.mx/'+data.imagen+" ></div></a>"+
+            //                     "</div>"+
+            //                 "<div class='col2'>"+
+            //                     "<div class='columna2_producto'>"+
+            //                         "<ul class='sabores_p'>"+
+            //                             "<li class='dul'><a onClick='showPopupLimDul()'><img id='dul' src='img/ic_dulceO_36.png'><h3></h3></a></li>"+
+            //                             "<li class='sal'><a onClick='showPopupLimSal()'><img id='sal' src='img/ic_salO_36.png'><h3></h3></a></li>"+
+            //                             "<li class='chi'><a onClick='showPopupLimChi()'><img id='chi' src='img/ic_chileO_36.png'><h3></h3></a></li>"+
+            //                             "<li class='lim'><a onClick='showPopupLimEst()'><img id='lim' src='img/ic_limonO_36.png'><h3></h3></a></li>"+
+            //                         "</ul>"+
+            //                         "<div class='dato_platillo'>"+
+            //                             "<h2 class='nom_platillo' id='nombre_platillo'>"+data.nombreP+"</h2>"+
+            //                             "<h2 class='precio_platillo' id='precio'>"+data.costo_unitario+"</h2>"+
+            //                         "</div>"+
+            //                         "<div id='container'>"+
+            //                             "<section id='accordion'>"+
+            //                                 "<div>"+
+            //                                     "<input type='radio' id='"+data.idProducto+"'option-50' name='accordion-group'/>"+
+            //                                     "<label for='"+data.idProducto+"'option-50' >Descripción</label>"+
+            //                                     "<article>"+
+            //                                         "<p id='descripcion'>"+data.descripcion+"</p>"+
+            //                                     "</article>"+
+            //                                 "</div>"+
+            //                                 "<div>"+
+            //                                     "<input type='radio' id='"+data.idProducto+"'option-51' name='accordion-group'/>"+
+            //                                     "<label for='"+data.idProducto+"option-51'>Tiempo de entrega</label>"+
+            //                                     "<article>"+
+            //                                         "<p id='tiempo'>Lorem ipsum dolor sit amet</p>"+
+            //                                     "</article>"+
+            //                                 "</div>"+
+            //                                 "<div>"+
+            //                                     "<input type='radio' id='' />"+
+            //                                     "<a href='#platillos_reservacion' name="+data.idProducto+" id='btn_agregar_otro_res'><label class='res_envio'>Agregar</label></a>"+
+                                                
+            //                                 "</div>"+
+            //                             "</section>"+
+            //                         "</div>"+
+            //                     "</div>"+
+            //                 "</div>"+
+            //                 "</div>"+
+            //             "</div>");
+            //                          div.append(
+            //                         "<li>"+
+            //                             "<div class='grid-photo-box'>"+
+            //                             "<a href='#seleccionar_platillo_r"+contador+"'><img src="+'http://www.tastyfoods.com.mx/'+data.imagen+" /></a>"+
+            //                             "</div>"+
+            //                         "</li>");
+            //                          contador++;
+
+            //                   }); 
+            //             } 
+
+            //         });
+            //     });
+        
+
+        }
+
+    });
+
 }
 
+function agregar_res(id_platillo, nombreP, id_restaurante){
+    contPlatillos++;
+    nombreSelec.push(nombreP);
+    platillosSelec.push(id_platillo);
+    // alert(nombreSelec);
+    console.log(nombreP);
+    var div = $('#agregar_platillos_r #platillos_cuadros');
+                div.empty();
+    // alert(platillosSelec);
+                 $.ajax({
+                    type: "post", 
+                    url: "http://www.tastyfoods.com.mx/users/platilloEsp", //CAMBIAR URL
+                    data: ({id : id_platillo }),
+                    cache: false,
+                    dataType: "json",
+                     success: function (data) {  
+                        $('.platillos_reservacion').append(
+                            "<li>"+
+                                "<div class='productos grid'>"+
+                                    "<div class='sep'>"+
+                                        "<div class='mesa'>"+
+                                            "<div class='col-3'>"+
+                                                "<label for='test2' id='nombre_producto"+data[0].idP+"'>"+data[0].nombreP+"</label>"+
+                                            "</div>"+
+                                            "<div class='col-3 div_select_cp_r'>"+
+                                                "<select class='cantidad_platillo_r' id='cantidad_platillo_"+data[0].idP+"'>"+
+                                                    "<option value='1'>1</option>"+
+                                                    "<option value='2'>2</option>"+
+                                                    "<option value='3'>3</option>"+
+                                                    "<option value='4'>4</option>"+
+                                                    "<option value='5'>5</option>"+
+                                                    "<option value='6'>6</option>"+
+                                                    "<option value='7'>7</option>"+
+                                                    "<option value='8'>8</option>"+
+                                                    "<option value='9'>9</option>"+
+                                                    "<option value='10'>10</option>"+
+                                                    "<option value='10+'>10+</option>"+
+                                                "</select>"+
+                                                "<input type='number' id='input_cantidad_platillo_"+data[0].idP+"' />"+
+                                            "</div>"+
+                                            "<div class='col13'>"+
+                                                "<label name='"+data[0].costo_unitario+"' class='precio_producto_r'>"+data[0].costo_unitario+"</label>"+
+                                            "</div>"+
+                                        "</div>"+
+                                        "<input type='hidden' class='pr' value='"+data[0].idP+"' />"+
+                                    "</div>"+
+                                "</div>"+
+                            "</li>");  
+                            totalPagarRes();        
+                            var dataID=data[0].idP;
+                            // alert(dataID);
+                            // $('#btn_agregar_res').each(function () {
+                            //      platillosSelec [i] = this.value;
+                            //      alert(platillosSelec [i]);
+                            //         i++;
+                            // });
+
+
+
+                            $(document).on('change','#cantidad_platillo_'+dataID,function(){
+                                cantidad_platillo_res = document.getElementById('cantidad_platillo_'+dataID).value;
+                                signo = "$";
+                                localStorage.setItem('cantidad_res',cantidad_platillo_res);
+
+                                //MOSTRAR INPUT AL SELECCIONAR 10+
+                                if (cantidad_platillo_res=="10+") {
+                                    $("#cantidad_platillo_"+dataID).css("display","none");
+                                    $("#input_cantidad_platillo_"+dataID).css("display","block");
+
+                                    document.getElementById("input_cantidad_platillo_"+dataID).onkeyup = function() {
+                                        var input_cantidad_plat_res = $("#input_cantidad_platillo_"+dataID).val();
+                                        
+                                        cant_r = $(this).parents('.mesa').find('.precio_producto_r');  
+                               
+                                        totalR = input_cantidad_plat_res*$(cant_r).attr("name");
+                                        cant_r.text(totalR);
+                                        totalPagarRes();
+
+                                        var sum_r = Number($('#platillos_reservacion #total_r').text());
+                                 
+                                        localStorage.setItem('costo_r',sum_r);
+                                    };
+                                };       
+
+                                //MOSTRAR PRECIO DEPENDIENDO DEL CAMBIO DEL SELECT  
+                                cant_r = $(this).parents('.mesa').find('.precio_producto_r');  
+                               
+                                totalR = cantidad_platillo_res*$(cant_r).attr("name");
+                                cant_r.text(totalR);
+                                totalPagarRes();
+                                var sum_r = Number($('#platillos_reservacion #total_r').text());
+                                 
+                                localStorage.setItem('costo_r',sum_r);
+                                
+                            });
+
+            
+                        }
+            
+                });
+
+                $(document).on('click','#agregar_plat_res',function(e){
+                
+                // alert();
+                // var boton = $(this);
+                identificador =  id_platillo;
+                // alert(identificador);
+                
+        
+                 $.ajax({ 
+                        type: "get", 
+                        url: "http://www.tastyfoods.com.mx/users/alimentos", //CAMBIAR URL
+                        dataType: "json",
+                         success: function (data) {
+                            contador = 40;
+                            var conP = 0;
+                            // alert(platillosSelec);
+                            var contadorPlat;
+                            var platillosSelecTem = [1,9,8];
+                            // alert(platillosSelecTem[1]);
+                            var div = $('#agregar_platillos_r #platillos_cuadros');
+                            div.empty();
+                             $(data).each(function (index, data) {
+                                if (data.id_restaurante == id_restaurante) {
+                                    // for( contadorPlat=0; contadorPlat <= platillosSelecTem.length; contadorPlat++ ){
+                                    //     if (data.idP != platillosSelecTem[contadorPlat]) {
+                                            // alert(data.nombreP);
+                                    $('.pages').append(
+                                        " <div  class='panel' id='seleccionar_platillo_r"+contador+"' data-title='Restaurante'>"+
+                                            "<div class='grid'>"+
+                                                "<div class='col2'>"+
+                                                    "<a onClick='showCustomHtmlSheet()''><div class='platillo'><img src="+'http://www.tastyfoods.com.mx/'+data.imagen+" ></div></a>"+
+                                                "</div>"+
+                                                "<div class='col2'>"+
+                                                "<div class='columna2_producto'>"+
+                                                    "<ul class='sabores_p'>"+
+                                                        "<li class='dul'><a onClick='showPopupLimDul()'><img id='dul' src='img/ic_dulceO_36.png'><h3></h3></a></li>"+
+                                                        "<li class='sal'><a onClick='showPopupLimSal()'><img id='sal' src='img/ic_salO_36.png'><h3></h3></a></li>"+
+                                                        "<li class='chi'><a onClick='showPopupLimChi()'><img id='chi' src='img/ic_chileO_36.png'><h3></h3></a></li>"+
+                                                        "<li class='lim'><a onClick='showPopupLimEst()'><img id='lim' src='img/ic_limonO_36.png'><h3></h3></a></li>"+
+                                                    "</ul>"+
+                                                "<div class='dato_platillo'>"+
+                                                    "<h2 class='nom_platillo' id='nombre_platillo'>"+data.nombreP+"</h2>"+
+                                                    "<h2 class='precio_platillo' id='precio'>"+data.costo_unitario+"</h2>"+
+                                                "</div>"+
+                                                "<div id='container'>"+
+                                                "<section id='accordion'>"+
+                                                "<div>"+
+                                                    "<input type='radio' id='"+data.idProducto+"'option-50' name='accordion-group'/>"+
+                                                    "<label for='"+data.idProducto+"'option-50' >Descripción</label>"+
+                                                    "<article>"+
+                                                        "<p id='descripcion'>"+data.descripcion+"</p>"+
+                                                    "</article>"+
+                                                "</div>"+
+                                                "<div>"+
+                                                    "<input type='radio' id='"+data.idProducto+"'option-51' name='accordion-group'/>"+
+                                                    "<label for='"+data.idProducto+"option-51'>Tiempo de entrega</label>"+
+                                                    "<article>"+
+                                                        "<p id='tiempo'>Lorem ipsum dolor sit amet</p>"+
+                                                    "</article>"+
+                                                "</div>"+
+                                                "<div>"+
+                                                    "<input type='radio' id='' />"+
+                                                    "<a href='#platillos_reservacion' name="+data.idP+" id='btn_agregar_otro_res' onclick='agregar_res("+data.idP+", "+data.nombreP+", "+data.id_restaurante+")'><label class='res_envio'>Agregar</label></a>"+
+                                                "</div>"+
+                                            "</section>"+
+                                        "</div>"+
+                                    "</div>"+
+                                "</div>"+
+                            "</div>"+
+                        "</div>");
+                        div.append(
+                            "<li>"+
+                                "<div class='grid-photo-box'>"+
+                                    "<a href='#seleccionar_platillo_r"+contador+"'><img src="+'http://www.tastyfoods.com.mx/'+data.imagen+" /></a>"+
+                                "</div>"+
+                            "</li>");
+                        contador++;
+                              // break;
+                              //           }else{
+                              //               alert(data.nombreP+" YA");
+                              //               continue;
+                                            
+                                // }    
+                                // contadorPlat++;
+
+                        };
+                    }); 
+                } 
+            });
+        });
+        
+        $("#aceptar_plat_res").on("click", function(){
+        //MOSTRAR TEXTO DE CONFIRMACION EN PAGE8
+        // var tamañoArrayPlat = platillosSelec.length;
+        // alert(tamañoArrayPlat);
+
+
+        //     $.ajax({
+        //         type: 'get',
+        //         url: 'http://www.tastyfoods.com.mx/users/alimentos',             
+        //         dataType: 'json',               
+        //         success: function (data) {
+        //             var contNombre;
+        //             $(data).each(function (index, data) {
+                        
+        //                 // if (data.id_restaurante==id_restaurante) {
+        //                     // for( contNombre=0; contNombre < platillosSelec.length; contNombre++ ){
+        //                         if (data.idP == platillosSelec[contNombre]) {
+        //                             alert(platillosSelec[contNombre]);
+                                    
+        //                         }
+        //                     // }
+
+        //                     // if (data.idP==) {};
+        //                     // $("#page8 .confirmar_datos").append(
+        //                     //     "<h2>Usted esta por confirmar una reservación para "+mesa_para_input+" personas "+
+        //                     //     "a las "+hora+" hrs. en "+data.nombre+", con ubicación en "+data.direccion+"</h2>");
+        //                 contNombre++;
+        //                 // };  
+        //             });     
+        //         }
+        //     });
+        });
+    
+
+}
+
+function totalPagarRes(){
+    var sum_r = 0;
+    $('.precio_producto_r').each(function () {
+        sum_r += Number($(this).text());
+    });
+    $("#platillos_reservacion #total_r").text(sum_r);        
+}
 
 function limpiarCampos(){
     $("#correo").val("");
@@ -2362,6 +3165,11 @@ function limpiarCampos(){
     $("#address").text("Arrastra el marcador y selecciona el domicilio donde se hará tú entrega.");
     $("#cantidad_platillo").css("display","block");
     $("#input_cantidad_platillo").css("display","none");
+    $("#mesa_para_select").css("display","block");
+    $("#mesa_para_input").css("display","none");
+    $("#mesa_para_input").val("");
+    $('#mesa_para_select').val($('#mesa_para_select > option:first').val());
+    $('#cantidad_platillo').val($('#cantidad_platillo > option:first').val());
 
 }
 

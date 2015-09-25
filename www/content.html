@@ -958,7 +958,8 @@
                     </div>
                     
                     <div class="col-2">
-                    <select  id="mesa_para_select" onchange="habilitarInputMesa()">
+                    <select  id="mesa_para_select">
+                        <option ></option>
                         <option value="1">1</option>
                         <option value="2" >2</option>
                         <option value="3" >3</option>
@@ -983,7 +984,7 @@
                         <input type="time" id="hora" />    
                     </div>
                 </div>
-                    <a class="button green reg" href="#agregar_platillos_r" id="agregar_p_res" onclick="agregarPlatilloRes()">Agregar platillo</a>
+                    <a class="button green reg" href="#agregar_platillos_r" id="agregar_p_res">Agregar platillo</a>
             
                     <h2>Ubicación</h2>
                 <div id="mapa">
@@ -998,7 +999,7 @@
             <div  class="panel" id="page8" data-title="Confirmar reservación">
                 <div class="confirmar tam">
                 <div class="confirmar_datos">
-                    <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer aliquam finibus ipsum, in posuere eros convallis et. Sed fermentum massa a fermentum egestas. Mauris facilisis eget lorem gravida gravida. Morbi in justo at diam aliquam ornare. In venenatis in leo vitae eleifend. In purus leo, efficitur vel feugiat ac.</h2>
+                    
                 </div>
                     <div class="confirmar_button">
                     <a class="button block green reg"  id="confirmar_reserv">Confirmar</a>
@@ -1008,19 +1009,19 @@
 
 <!-- AGREGAR PRODUCTO RESERVACION -->
             <div  class="panel" id="agregar_platillos_r" data-title="Reservación">
-                <div class="grid grid-photo" id="platillos_cuadros">
+                <div class="grid grid-photo agregar_platillos_r" id="platillos_cuadros" >
                                 
                 </div> 
             </div>
 <!-- SELECCIONAR ALIMENTO RESERVACION-->
         <div  class="panel" id="alimento_seleccionado" data-title="Reservación">
-            <div class="grid">
-                        <div class="col2">
-                             <a onClick="showCustomHtmlSheet()"><div class="platillo"><img src="img/icon.png"></div></a>
-                        </div>
+            <!-- <div class="grid">
+                <div class="col2">
+                    <a onClick="showCustomHtmlSheet()"><div class="platillo"><img src="img/icon.png"></div></a>
+                </div>
 
-                        <div class="col2">
-                        <div class="columna2_producto">
+                <div class="col2">
+                    <div class="columna2_producto">
                         <ul class="sabores_p">
                             <li class="dul"><a onClick="showPopupLimDul()"><img id="dul" src="img/ic_dulceO_36.png"><h3>4.2</h3></a></li>
                             <li class="sal"><a onClick="showPopupLimDul()"><img id="sal" src="img/ic_salO_36.png"><h3>5.5</h3></a></li>
@@ -1052,14 +1053,17 @@
                                     <label class="res_envio"><a href="#platillos_reservacion" id="btn_agregar_res" onclick="agregarPlatilloRes(id_platillo)">Agregar</a></label>
                                 </div>
                             </section>
-                            </div>
-                        </div>
                         </div>
                     </div>
-            </div>
+                </div>
+            </div> -->
+        </div>
 <!-- ALIMENTOS SELECCIONADOS RESERVACION -->
             <div  class="panel" id="platillos_reservacion" data-title="Reservación">
-                <div class="mesa">
+            <ul class="platillos_reservacion">
+                
+            </ul>
+               <!--  <div class="mesa">
                     <div class="col-3">
                         <label id="nombre_producto">Nombre</label>
                     </div>
@@ -1080,18 +1084,20 @@
                     <div class="col-3">
                         <label id="precio_producto_r">$0.00</label>
                     </div>
-                </div>
-                <div class="mesa2">
-                    <div class="col23">
-                        <label class="total" id="total_label_r">Total:</label>
-                    </div>
+                </div> -->
+                    <div class="mesa2">
+                        <div class="col23">
+                            <label class="total" id="total_label_r">Total:</label>
+                        </div>
                         <div class="col13">
                             <label class="total" id="total_r">$0.00</label>    
                         </div>
                     </div>
-                        <a class="button green reg" href="#agregar_platillos_r" id="agregar_plat_res" onclick="agregarOtroRes(id_platillo,id_restaurante)">Agregar otro platillo</a>
-                        <a class="button block green reg" href="#page7" onclick="aceptarPlatillos(id_platillo,id_restaurante)">Aceptar</a>
+                        <a class="button green reg" href="#agregar_platillos_r" id="agregar_plat_res">Agregar otro platillo</a>
+                        <a class="button block green reg" href="#page8" id="aceptar_plat_res">Aceptar</a>
             </div>
+
+
 
 <!-- AGREGAR PRODUCTO ENVIO-->
             <div  class="panel" id="agregar_platillos_e" data-title="Restaurante">
@@ -1193,7 +1199,7 @@
                                 </div>
                               
                 </div>
-                    <a class="button green reg" href="#agregar_platillos_e" id="agregar_plat_res">Agregar otro platillo</a>
+                    <a class="button green reg" href="#agregar_platillos_e" id="agregar_plat_env">Agregar otro platillo</a>
                     <a class="button yellow" href="#" id="aplicar_descuento">Aplicar descuento</a>
                     <a class="button block green reg" id="asignar_dom" href="#page10" >Aceptar y asignar domicilio</a>
                     

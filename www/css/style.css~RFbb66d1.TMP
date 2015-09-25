@@ -967,12 +967,10 @@ width: 28px;
 }
 
 #mesa_para_input,
-.div_select_cp_r input[type="number"],
 .div_select_cp input[type="number"]{
   display: none;
 }
 
-.platillos_reservacion,
 .productos_entrega{
   border-bottom: 1px rgba(158, 158, 158, 0.7) solid;
 }
@@ -1285,8 +1283,7 @@ input[type="checkbox"]:checked + label:before{
 }
 
 #btn_valoracion,
-#agregar_plat_res,
-#agregar_plat_env{
+#agregar_plat_res{
   width: 100%;
 }
 /*.mesa input,
